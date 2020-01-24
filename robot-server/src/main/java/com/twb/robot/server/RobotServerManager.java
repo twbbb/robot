@@ -9,7 +9,7 @@ import com.twb.robot.server.imp.LovelyCatRobot;
  */
 public class RobotServerManager {
 	
-	public static RobotServer getRobotServer(){
+	public static IRobotServer getRobotServer(){
 		return new LovelyCatRobot(); 
 	}
 

@@ -3,7 +3,7 @@ package com.twb.robot.server;
 import com.twb.robot.common.entity.MessageReceive;
 import com.twb.robot.common.entity.MessageSend;
 
-public interface RobotServer {
+public interface IRobotServer {
 
 	/**
 	 * 将机器人获取数据转换为MessageReceive

@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import com.twb.robot.common.entity.MessageReceive;
 import com.twb.robot.common.entity.MessageSend;
 
-public abstract class BaseRobotServer  implements RobotServer{
+public abstract class BaseRobotServer  implements IRobotServer{
 	
 	private  Logger logger = LoggerFactory.getLogger(this.getClass());
 	
