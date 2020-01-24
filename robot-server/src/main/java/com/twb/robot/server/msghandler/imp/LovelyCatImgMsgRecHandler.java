@@ -1,8 +1,8 @@
 package com.twb.robot.server.msghandler.imp;
 
+import com.twb.robot.common.config.LovelyCatRobotConstants;
 import com.twb.robot.common.entity.MessageReceive;
 import com.twb.robot.common.utils.StringConvertUtils;
-import com.twb.robot.config.LovelyCatRobotConstants;
 import com.twb.robot.server.msghandler.BaseLovelyCatMsgRecHandler;
 import com.twb.robot.server.msghandler.IMessageReceiveHandler;
 

@@ -1,4 +1,4 @@
-package com.twb.robot.config;
+package com.twb.robot.common.config;
 
 public class LovelyCatRobotConstants {
 
@@ -22,6 +22,11 @@ public class LovelyCatRobotConstants {
 	public static final String MSG_SUBTYPE_IMG="3";//图片消息
 	public static final String MSG_SUBTYPE_VOICE="34";//语音消息
 	public static final String MSG_SUBTYPE_LINK="49";//链接消息
+	public static final String MSG_SUBTYPE_WITHDRAW="2005";//撤回
+	
+	public static final String MSG_SUBTYPE_NOTICE="10002";//@自己时候
+
+	
 	
 	//type=100&msg_type=1&from_wxid=wxid_sndgxwk6qc1m21&final_from_wxid=wxid_sndgxwk6qc1m21&from_name=田文彬 &final_from_name=田文彬 &robot_wxid=wxid_mzss9j7otj9n22&msg= wer&time=1579851064&rid=10003
 	//type=100&msg_type=3&from_wxid=wxid_sndgxwk6qc1m21&final_from_wxid=wxid_sndgxwk6qc1m21&from_name=田文彬 &final_from_name=田文彬 &robot_wxid=wxid_mzss9j7otj9n22&msg=C:\Users\Administrator\Desktop\cat\data\temp\\wxid_mzss9j7otj9n22\1703820541.jpg&file_url=http://114.67.112.14:8073/static/1703820541.jpg&time=1579851536&rid=10004

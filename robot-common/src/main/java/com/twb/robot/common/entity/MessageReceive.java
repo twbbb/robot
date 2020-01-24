@@ -19,10 +19,6 @@ import javax.persistence.UniqueConstraint;
 public class MessageReceive
 {
 
-	public static final String MESSAGETYPE_TEXT = "1";// 1.文本
-	public static final String MESSAGETYPE_VOICE = "2";// 2.语音
-	public static final String MESSAGETYPE_IMAGE = "3";// 3.图片
-	public static final String MESSAGETYPE_LINK = "4";// 4.链接
 
 	@Id // 这是一个主键
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // 自增主键
@@ -44,7 +40,7 @@ public class MessageReceive
 	@Column(columnDefinition = "varchar(200)")
 	private String wxgroupName =""; // 微信群组名称
 
-	@Column(columnDefinition = "varchar(10)")
+	@Column(columnDefinition = "varchar(100)")
 	private String localRobotId  =""; // 当前账号id
 	
 	@Column(columnDefinition = "varchar(10)")

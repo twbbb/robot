@@ -1,10 +1,13 @@
 package com.twb.robot.server.imp;
 
 import java.net.URLDecoder;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.twb.robot.common.config.RobotCommonConstants;
 import com.twb.robot.common.entity.MessageReceive;
+import com.twb.robot.common.entity.MessageReceiveQueue;
 import com.twb.robot.common.entity.MessageSend;
 import com.twb.robot.server.BaseRobotServer;
 import com.twb.robot.server.msghandler.IMessageReceiveHandler;
@@ -43,10 +46,11 @@ public class LovelyCatRobot extends BaseRobotServer {
 		}
 
 		IMessageReceiveHandler messageReceiveHandler = MessageHandlerManager.getMessageReceiveHandler();
-		messageReceiveHandler.init(obj);
+		messageReceiveHandler.init(paramMap);
 		MessageReceive messageReceive = messageReceiveHandler.handlerReceivMsg();
 		
 		
+			
 		
 		return messageReceive;
 	}

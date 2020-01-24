@@ -75,6 +75,7 @@ public abstract class BaseLovelyCatMsgRecHandler implements IMessageReceiveHandl
 			return this.handlerMyReceivMsg();
 		}else{
 			if(wapper!=null){
+				wapper.init(this.getParamMap());
 				return wapper.handlerReceivMsg();
 			} 
 		}
