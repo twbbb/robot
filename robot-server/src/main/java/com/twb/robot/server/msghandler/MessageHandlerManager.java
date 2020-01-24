@@ -11,7 +11,7 @@ public class MessageHandlerManager {
 		messageReceiveHandler = new LovelyCatOtherMsgRecHandler(messageReceiveHandler);
 		messageReceiveHandler = new LovelyCatImgMsgRecHandler(messageReceiveHandler);
 
-		return null;
+		return messageReceiveHandler;
 	}
 	
 }

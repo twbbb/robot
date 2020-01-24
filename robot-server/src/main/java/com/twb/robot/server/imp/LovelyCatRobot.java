@@ -1,14 +1,14 @@
 package com.twb.robot.server.imp;
 
 import java.net.URLDecoder;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.twb.robot.common.entity.MessageReceive;
 import com.twb.robot.common.entity.MessageSend;
-import com.twb.robot.common.utils.StringConvertUtils;
 import com.twb.robot.server.BaseRobotServer;
+import com.twb.robot.server.msghandler.IMessageReceiveHandler;
+import com.twb.robot.server.msghandler.MessageHandlerManager;
 
 /**
  * 可爱猫机器人
@@ -41,16 +41,10 @@ public class LovelyCatRobot extends BaseRobotServer {
 		if(paramMap==null||paramMap.isEmpty()){
 			return null;
 		}
-		//type=100&msg_type=1&from_wxid=wxid_sndgxwk6qc1m21&final_from_wxid=wxid_sndgxwk6qc1m21&from_name=田文彬 &final_from_name=田文彬 &robot_wxid=wxid_mzss9j7otj9n22&msg= wer&time=1579851064&rid=10003
-		//type=100&msg_type=3&from_wxid=wxid_sndgxwk6qc1m21&final_from_wxid=wxid_sndgxwk6qc1m21&from_name=田文彬 &final_from_name=田文彬 &robot_wxid=wxid_mzss9j7otj9n22&msg=C:\Users\Administrator\Desktop\cat\data\temp\\wxid_mzss9j7otj9n22\1703820541.jpg&file_url=http://114.67.112.14:8073/static/1703820541.jpg&time=1579851536&rid=10004
-		//type=200&msg_type=1&from_wxid=23070876266@chatroom&final_from_wxid=wxid_sndgxwk6qc1m21&from_name=测试&final_from_name=田文彬&robot_wxid=wxid_mzss9j7otj9n22&msg=123&time=1579851617&rid=10005
-		//type=200&msg_type=3&from_wxid=23070876266@chatroom&final_from_wxid=wxid_sndgxwk6qc1m21&from_name=测试&final_from_name=田文彬&robot_wxid=wxid_mzss9j7otj9n22&msg=C:\Users\Administrator\Desktop\cat\data\temp\\wxid_mzss9j7otj9n22\1703820543.jpg&file_url=http://114.67.112.14:8073/static/1703820543.jpg&time=1579851625&rid=10006
-		
-		
-		MessageReceive messageReceive = new MessageReceive();
-		
-		
-		
+
+		IMessageReceiveHandler messageReceiveHandler = MessageHandlerManager.getMessageReceiveHandler();
+		messageReceiveHandler.init(obj);
+		MessageReceive messageReceive = messageReceiveHandler.handlerReceivMsg();
 		
 		
 		

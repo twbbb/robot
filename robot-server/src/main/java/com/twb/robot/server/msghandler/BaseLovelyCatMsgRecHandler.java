@@ -51,7 +51,7 @@ public abstract class BaseLovelyCatMsgRecHandler implements IMessageReceiveHandl
 		
 		messageReceive.setMsgId(rid+"_"+localRobotId); 
 		messageReceive.setTimestamp(new Date(Long.parseLong(time)*1000l));
-		messageReceive.setCol1(rid);
+		messageReceive.setCol1("");
 		messageReceive.setCol2("");
 		messageReceive.setCol3("");
 		

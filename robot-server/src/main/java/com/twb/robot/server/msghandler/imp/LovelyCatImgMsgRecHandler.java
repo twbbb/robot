@@ -1,6 +1,7 @@
 package com.twb.robot.server.msghandler.imp;
 
 import com.twb.robot.common.entity.MessageReceive;
+import com.twb.robot.common.utils.StringConvertUtils;
 import com.twb.robot.config.LovelyCatRobotConstants;
 import com.twb.robot.server.msghandler.BaseLovelyCatMsgRecHandler;
 import com.twb.robot.server.msghandler.IMessageReceiveHandler;
@@ -14,7 +15,9 @@ public class LovelyCatImgMsgRecHandler extends BaseLovelyCatMsgRecHandler{
 	
 	@Override	
 	public MessageReceive handlerMyReceivMsg() {
-		return this.getMessageReceive();
+		MessageReceive messageReceive =  this.getMessageReceive();
+		messageReceive.setCol1(StringConvertUtils.toString(this.getParamMap().get("file_url")));
+		return messageReceive;
 	}
 
 	@Override
