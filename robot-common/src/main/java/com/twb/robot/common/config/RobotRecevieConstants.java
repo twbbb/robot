@@ -1,6 +1,6 @@
 package com.twb.robot.common.config;
 
-public class LovelyCatRobotConstants {
+public class RobotRecevieConstants {
 
 	//type            
 	public static final String MSG_TYPE_PRIVATE_CHAT ="100";//私聊消息

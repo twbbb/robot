@@ -38,7 +38,7 @@ public class MessageReceive
 	@Column(columnDefinition = "varchar(200)")
 	private String fromGroupId =""; // 微信群组id
 	@Column(columnDefinition = "varchar(200)")
-	private String wxgroupName =""; // 微信群组名称
+	private String fromGroupName =""; // 微信群组名称
 
 	@Column(columnDefinition = "varchar(100)")
 	private String localRobotId  =""; // 当前账号id
@@ -95,12 +95,6 @@ public class MessageReceive
 	public void setFromGroupId(String fromGroupId) {
 		this.fromGroupId = fromGroupId;
 	}
-	public String getWxgroupName() {
-		return wxgroupName;
-	}
-	public void setWxgroupName(String wxgroupName) {
-		this.wxgroupName = wxgroupName;
-	}
 	public String getMsgType() {
 		return msgType;
 	}
@@ -142,6 +136,12 @@ public class MessageReceive
 	}
 	public void setLocalRobotId(String localRobotId) {
 		this.localRobotId = localRobotId;
+	}
+	public String getFromGroupName() {
+		return fromGroupName;
+	}
+	public void setFromGroupName(String fromGroupName) {
+		this.fromGroupName = fromGroupName;
 	}
 	
 	

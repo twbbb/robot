@@ -6,16 +6,13 @@ import javax.persistence.*;
 
 //使用JPA注解配置映射关系
 @Entity // 告诉JPA这是一个实体类（和数据表映射的类）
-@Table(name = "message_send") 
-public class MessageSend
+@Table(name = "message_send_his") 
+public class MessageSendHis
 {
 
 	@Id // 这是一个主键
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // 自增主键
 	private Integer id;
 
-	
-	
 
 	@Column(columnDefinition = "varchar(200)")
 	private String toUserId =""; // 微信群组发送者id
