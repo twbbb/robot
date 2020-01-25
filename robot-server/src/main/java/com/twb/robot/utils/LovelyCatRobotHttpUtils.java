@@ -23,7 +23,6 @@ import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSONObject;
 import com.twb.robot.common.utils.StringConvertUtils;
-import com.twb.robot.service.imp.RobotMessageServiceImp;
 
 public class LovelyCatRobotHttpUtils {
 	private static CloseableHttpClient httpClient = null;
@@ -31,18 +30,7 @@ public class LovelyCatRobotHttpUtils {
 	private static final Logger logger = LoggerFactory.getLogger(LovelyCatRobotHttpUtils.class);
 
 	
-	public static boolean checkSuccess(Map map){
-		if(map==null||map.isEmpty()){
-			return false;
-		}
-		String code = StringConvertUtils.toString(map.get("code"));
-		
-		if("0".equals(code)){
-			return true;
-		}else{
-			return false;
-		}
-	}
+
 	
 	
 	public static Map sendMsg(Map param){

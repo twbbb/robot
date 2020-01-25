@@ -24,6 +24,11 @@ public class MessageSendHandlerManager {
 
 	public static IMessageSendHandler getMessageSendHandler(){
 		IMessageSendHandler messageSendHandler = null ;
+		messageSendHandler = new LovelyCatExtMsgFriendListHandler(messageSendHandler);
+		messageSendHandler = new LovelyCatExtMsgGroupListHandler(messageSendHandler);
+		messageSendHandler = new LovelyCatExtMsgGroupMemberHandler(messageSendHandler);
+		messageSendHandler = new LovelyCatExtMsgLoggedRobotHandler(messageSendHandler);
+		messageSendHandler = new LovelyCatExtMsgRobotNameHandler(messageSendHandler);
 		messageSendHandler = new LovelyCatFriendAgreeMsgHandler(messageSendHandler);
 		messageSendHandler = new LovelyCatFriendDelMsgHandler(messageSendHandler);
 		messageSendHandler = new LovelyCatGroupAgreeMsgHandler(messageSendHandler);
@@ -41,15 +46,5 @@ public class MessageSendHandlerManager {
 		return messageSendHandler;
 	}
 	
-	public static IMessageSendHandler getMessageExtSendHandler(){
-		IMessageSendHandler messageSendHandler = null ;
-		messageSendHandler = new LovelyCatExtMsgFriendListHandler(messageSendHandler);
-		messageSendHandler = new LovelyCatExtMsgGroupListHandler(messageSendHandler);
-		messageSendHandler = new LovelyCatExtMsgGroupMemberHandler(messageSendHandler);
-		messageSendHandler = new LovelyCatExtMsgLoggedRobotHandler(messageSendHandler);
-		messageSendHandler = new LovelyCatExtMsgRobotNameHandler(messageSendHandler);
-		
-		return messageSendHandler;
-	}
 	
 }

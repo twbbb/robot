@@ -15,6 +15,7 @@ import com.twb.robot.common.dao.MessageReceiveRepository;
 import com.twb.robot.common.dao.MsgReceiveQueueRepository;
 import com.twb.robot.common.entity.MessageReceive;
 import com.twb.robot.common.entity.MessageReceiveQueue;
+import com.twb.robot.common.entity.MessageSend;
 import com.twb.robot.server.RobotServerManager;
 import com.twb.robot.service.RobotMessageService;
 
@@ -48,17 +49,14 @@ public class RobotMessageServiceImp implements RobotMessageService
 		
 		msgReceiveQueueRepository.save(messageReceiveQueue);
 	}
+
+
+
+	@Transactional
+	public void handlerSendMsg(MessageSend messageSend) {
+		
+	}
 	
-//	@Override
-//	@Transactional
-//	public void handlerReceivMsg(Map obj) {
-//		String sql = "INSERT student VALUES('2','2','3')";
-//		DbServiceUtil.getDbService().excuteUpdate(sql, new String[]{});
-//		System.out.println("end1");
-//		String sql2 = "select * from student a";
-//		List list = DbServiceUtil.getDbService().queryForMapListBySql(sql2, new String[]{});
-//		System.out.println(list);
-//	}
 
 
 
