@@ -1,4 +1,4 @@
-package com.twb.robot.server.msghandler;
+package com.twb.robot.server.msgrechandler;
 
 import com.twb.robot.common.entity.MessageReceive;
 

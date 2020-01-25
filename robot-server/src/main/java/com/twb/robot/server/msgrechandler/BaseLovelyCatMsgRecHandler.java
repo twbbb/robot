@@ -1,4 +1,4 @@
-package com.twb.robot.server.msghandler;
+package com.twb.robot.server.msgrechandler;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -41,7 +41,7 @@ public abstract class BaseLovelyCatMsgRecHandler implements IMessageReceiveHandl
 
 		
 		messageReceive.setFromGroupId(from_wxid);
-		messageReceive.setWxgroupName(from_name); 
+		messageReceive.setFromGroupName(from_name); 
 		messageReceive.setFromUserId(StringConvertUtils.toString(paramMap.get("final_from_wxid")));
 		messageReceive.setFromUserName(StringConvertUtils.toString(paramMap.get("final_from_name")));
 		messageReceive.setLocalRobotId(localRobotId);
@@ -58,11 +58,6 @@ public abstract class BaseLovelyCatMsgRecHandler implements IMessageReceiveHandl
 	} 
 	
 	
-
-	private boolean checkMyMsgType(Map paramMap) {
-		return true;
-	}
-
 
 
 	public boolean checkType() {

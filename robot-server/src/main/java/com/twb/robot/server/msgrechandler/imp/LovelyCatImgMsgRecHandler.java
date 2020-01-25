@@ -1,10 +1,10 @@
-package com.twb.robot.server.msghandler.imp;
+package com.twb.robot.server.msgrechandler.imp;
 
-import com.twb.robot.common.config.LovelyCatRobotConstants;
+import com.twb.robot.common.config.RobotRecevieConstants;
 import com.twb.robot.common.entity.MessageReceive;
 import com.twb.robot.common.utils.StringConvertUtils;
-import com.twb.robot.server.msghandler.BaseLovelyCatMsgRecHandler;
-import com.twb.robot.server.msghandler.IMessageReceiveHandler;
+import com.twb.robot.server.msgrechandler.BaseLovelyCatMsgRecHandler;
+import com.twb.robot.server.msgrechandler.IMessageReceiveHandler;
 
 public class LovelyCatImgMsgRecHandler extends BaseLovelyCatMsgRecHandler{
 
@@ -22,7 +22,7 @@ public class LovelyCatImgMsgRecHandler extends BaseLovelyCatMsgRecHandler{
 
 	@Override
 	public boolean checkMyType() {
-		if(LovelyCatRobotConstants.MSG_SUBTYPE_IMG.equals(this.getSubType())){
+		if(RobotRecevieConstants.MSG_SUBTYPE_IMG.equals(this.getSubType())){
 			return true;
 		}
 		else{

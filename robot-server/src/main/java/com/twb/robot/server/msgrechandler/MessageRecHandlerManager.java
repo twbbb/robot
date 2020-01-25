@@ -1,9 +1,9 @@
-package com.twb.robot.server.msghandler;
+package com.twb.robot.server.msgrechandler;
 
-import com.twb.robot.server.msghandler.imp.LovelyCatImgMsgRecHandler;
-import com.twb.robot.server.msghandler.imp.LovelyCatOtherMsgRecHandler;
+import com.twb.robot.server.msgrechandler.imp.LovelyCatImgMsgRecHandler;
+import com.twb.robot.server.msgrechandler.imp.LovelyCatOtherMsgRecHandler;
 
-public class MessageHandlerManager {
+public class MessageRecHandlerManager {
 
 
 	public static IMessageReceiveHandler getMessageReceiveHandler(){

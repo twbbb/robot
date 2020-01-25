@@ -3,7 +3,7 @@ package com.twb.robot.task;
 import org.springframework.stereotype.Component;
 
 @Component	
-public class GetPriceTask {
+public class SendMsgTask {
 
 //	@Autowired
 //	WechatMessageService wechatMessageServiceImp;
