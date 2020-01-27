@@ -33,4 +33,7 @@ public class RobotSendConstants {
 	public static final String MSG_SUBTYPE_NOTICE_TEXT="2";//发送群消息并艾特某人
 
 	public static final String MSG_SUBTYPE_IMG="3";//图片消息
+	
+	public static final String MSG_SUBTYPE_LINK="4";//链接消息
+
 }

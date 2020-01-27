@@ -143,14 +143,16 @@ public class MessageSend
 	public String getSendState() {
 		return sendState;
 	}
-	public void setSendState(String sendState) {
-		this.sendState = sendState;
-	}
+	
+	
 	public String getSendStateMsg() {
 		return sendStateMsg;
 	}
 	public void setSendStateMsg(String sendStateMsg) {
 		this.sendStateMsg = sendStateMsg;
+	}
+	public void setSendState(String sendState) {
+		this.sendState = sendState;
 	}
 	
 	

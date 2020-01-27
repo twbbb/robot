@@ -25,8 +25,10 @@ public class RobotRecevieConstants {
 	public static final String MSG_SUBTYPE_WITHDRAW="2005";//撤回
 	
 	public static final String MSG_SUBTYPE_NOTICE="10002";//@自己时候
-
 	
+	public static final String MSG_SUBTYPE_INVITE="2003";//邀请入群
+
+	//1/文本消息 3/图片消息 34/语音消息  42/名片消息  43/视频 47/动态表情 48/地理位置  49/分享链接  2001/红包  2002/小程序  2003/群邀请
 	
 	//type=100&msg_type=1&from_wxid=wxid_sndgxwk6qc1m21&final_from_wxid=wxid_sndgxwk6qc1m21&from_name=田文彬 &final_from_name=田文彬 &robot_wxid=wxid_mzss9j7otj9n22&msg= wer&time=1579851064&rid=10003
 	//type=100&msg_type=3&from_wxid=wxid_sndgxwk6qc1m21&final_from_wxid=wxid_sndgxwk6qc1m21&from_name=田文彬 &final_from_name=田文彬 &robot_wxid=wxid_mzss9j7otj9n22&msg=C:\Users\Administrator\Desktop\cat\data\temp\\wxid_mzss9j7otj9n22\1703820541.jpg&file_url=http://114.67.112.14:8073/static/1703820541.jpg&time=1579851536&rid=10004

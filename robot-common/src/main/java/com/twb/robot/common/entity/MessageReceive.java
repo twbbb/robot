@@ -50,9 +50,9 @@ public class MessageReceive
 	private String msgSubType  =""; // 消息子类型表，1文本，2语音，3图片4链接
 	@Column(columnDefinition = "varchar(4000)")
 	private String message  =""; // 消息内容,文本，语音转换的文本,链接标题',
-	@Column(columnDefinition = "varchar(1000)")
+	@Column(columnDefinition = "varchar(4000)")
 	private String col1="";
-	@Column(columnDefinition = "varchar(1000)")
+	@Column(columnDefinition = "varchar(4000)")
 	private String col2="";
 	@Column(columnDefinition = "varchar(1000)")
 	private String col3="";
