@@ -21,8 +21,8 @@ public class LovelyCatExtMsgFriendListHandler extends BaseLovelyCatMsgSendHandle
 
 
 	@Override
-	public Map handlerMyMessageSend(SendHandlerContext sendHandlerContext) {
-		Map map = new HashMap();
+	public void handlerMyMessageSend(SendHandlerContext sendHandlerContext) {
+		Map map = sendHandlerContext.getSendParam();
 		map.put(LovelyCatConstants.MSG_SEND_TYPE, "204");
 		String isRefresh=LovelyCatConstants.MSG_SEND_IS_REFRESH_Y;
 		if(!StringUtils.isEmpty(sendHandlerContext.getMessageSend().getCol1())){
@@ -31,8 +31,6 @@ public class LovelyCatExtMsgFriendListHandler extends BaseLovelyCatMsgSendHandle
 		map.put(LovelyCatConstants.MSG_SEND_ROBOT_WXID, sendHandlerContext.getMessageSend().getLocalRobotId());
 		map.put(LovelyCatConstants.MSG_SEND_IS_REFRESH, isRefresh);
 
-		
-		return map;
 	}
 
 

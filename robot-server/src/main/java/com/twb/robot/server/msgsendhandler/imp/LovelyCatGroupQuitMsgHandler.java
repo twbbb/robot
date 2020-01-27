@@ -19,19 +19,20 @@ public class LovelyCatGroupQuitMsgHandler extends BaseLovelyCatMsgSendHandler{
 
 
 	@Override
-	public Map handlerMyMessageSend(SendHandlerContext sendHandlerContext) {
-		Map map = new HashMap();
+	public void handlerMyMessageSend(SendHandlerContext sendHandlerContext) {
+		Map map = sendHandlerContext.getSendParam();
 		map.put(LovelyCatConstants.MSG_SEND_TYPE, "310");
 		map.put(LovelyCatConstants.MSG_SEND_ROBOT_WXID, sendHandlerContext.getMessageSend().getLocalRobotId());
 		map.put(LovelyCatConstants.MSG_SEND_GROUP_WXID, sendHandlerContext.getMessageSend().getToGroupId()); 
 		
-		return map;
+		
 	}
 
 
 	@Override
 	public String getCheckMsgType(SendHandlerContext sendHandlerContext) {
-		return RobotSendConstants.MSG_TYPE_GROUPQUIT;
+		//测试无法退群
+		return "err"+RobotSendConstants.MSG_TYPE_GROUPQUIT;
 	}
 
 

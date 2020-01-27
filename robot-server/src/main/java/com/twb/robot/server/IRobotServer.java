@@ -19,7 +19,7 @@ public interface IRobotServer {
 	 * @param handlerSendMsg
 	 * @return
 	 */
-	public Map handlerSendMsg(MessageSend messageSend);
+	public void handlerSendMsg(MessageSend messageSend);
 
 
 	

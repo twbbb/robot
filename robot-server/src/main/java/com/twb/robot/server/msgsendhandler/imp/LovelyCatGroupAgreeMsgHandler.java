@@ -19,14 +19,14 @@ public class LovelyCatGroupAgreeMsgHandler extends BaseLovelyCatMsgSendHandler{
 
 
 	@Override
-	public Map handlerMyMessageSend(SendHandlerContext sendHandlerContext) {
-		Map map = new HashMap();
+	public void handlerMyMessageSend(SendHandlerContext sendHandlerContext) {
+		Map map = sendHandlerContext.getSendParam();
 		map.put(LovelyCatConstants.MSG_SEND_TYPE, "302");
 		map.put(LovelyCatConstants.MSG_SEND_ROBOT_WXID, sendHandlerContext.getMessageSend().getLocalRobotId());
 		map.put(LovelyCatConstants.MSG_SEND_MSG, sendHandlerContext.getMessageSend().getMessage());// 同步消息事件中群聊邀请原消息
 
 		
-		return map;
+		
 	}
 
 

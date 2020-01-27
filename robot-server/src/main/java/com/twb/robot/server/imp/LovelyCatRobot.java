@@ -1,5 +1,6 @@
 package com.twb.robot.server.imp;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,11 +35,14 @@ public class LovelyCatRobot extends BaseRobotServer {
 		String body = (String) obj;
 		String[] bodyMap;
 		try {
-			bodyMap = URLDecoder.decode(body, "UTF-8").split("&");
+			
+			bodyMap =body.split("&");
 			for(String str:bodyMap){
-				String[] keyMap = str.split("=",-1);
-				if(keyMap.length==2){
-					paramMap.put(keyMap[0], keyMap[1]);
+				int index = str.indexOf("=");
+				if(index>-1){
+					String key = str.substring(0,index);
+					String value = str.substring(index+1);
+					paramMap.put(key, URLDecoder.decode(value, "UTF-8"));
 				}
 			}
 		} catch (Exception e) {
@@ -53,34 +57,45 @@ public class LovelyCatRobot extends BaseRobotServer {
 		ReceiveHandlerContext receiveHandlerContext = new ReceiveHandlerContext();
 		receiveHandlerContext.setReceiveParamMap(paramMap);
 		messageReceiveHandler.init(receiveHandlerContext);
-		MessageReceive messageReceive = messageReceiveHandler.handlerReceivMsg(receiveHandlerContext);
+		messageReceiveHandler.handlerReceivMsg(receiveHandlerContext);
 		
 		
 			
 		
-		return messageReceive;
+		return receiveHandlerContext.getMessageReceive();
 	}
 
 	@Override
-	public Map handlerMySendMsg(MessageSend messageSend) {
+	public void handlerMySendMsg(MessageSend messageSend) {
 		if(messageSend==null){
-			return null;
+			return ;
 		}
 		
 		IMessageSendHandler messageSendHandler = MessageSendHandlerManager.getMessageSendHandler();
 		SendHandlerContext sendHandlerContext = new SendHandlerContext();
 		sendHandlerContext.setMessageSend(messageSend);
 		messageSendHandler.init(sendHandlerContext);
-		Map sendParam =  (Map) messageSendHandler.handlerMessageSend(sendHandlerContext);
-		Map resultMap = LovelyCatRobotHttpUtils.sendMsg(sendParam);
+		messageSendHandler.handlerMessageSend(sendHandlerContext);
+		if(sendHandlerContext.getSendParam()==null||sendHandlerContext.getSendParam().isEmpty()){
+			messageSend.setSendState(RobotCommonConstants.MESSAGE_SEND_FAIL_STATE);
+			messageSend.setSendStateMsg("发送数据转换为空:"+messageSend.getId());
+			return;
+		}
+		
+		Map resultMap = LovelyCatRobotHttpUtils.sendMsg(sendHandlerContext.getSendParam());
 		if(checkSuccess(resultMap)){
+			String str = StringConvertUtils.toString(resultMap.get("data"));
+			try {
+				str	= URLDecoder.decode(str, "UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
 			messageSend.setSendState(RobotCommonConstants.MESSAGE_SEND_SUC_STATE);
-
+			messageSend.setMessage(str);
 		}else{
 			messageSend.setSendState(RobotCommonConstants.MESSAGE_SEND_FAIL_STATE);
 
 		}
-		return resultMap;
 		
 	}
 	
@@ -97,9 +112,5 @@ public class LovelyCatRobot extends BaseRobotServer {
 		}
 	}
 
-	@Override
-	public Map sendMyMsg(Object obj) {
-		return null;
-	}
 
 }

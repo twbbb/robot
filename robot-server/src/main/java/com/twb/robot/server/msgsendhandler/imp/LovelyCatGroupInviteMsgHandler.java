@@ -19,15 +19,15 @@ public class LovelyCatGroupInviteMsgHandler extends BaseLovelyCatMsgSendHandler{
 
 
 	@Override
-	public Map handlerMyMessageSend(SendHandlerContext sendHandlerContext) {
-		Map map = new HashMap();
+	public void handlerMyMessageSend(SendHandlerContext sendHandlerContext) {
+		Map map = sendHandlerContext.getSendParam();
 		map.put(LovelyCatConstants.MSG_SEND_TYPE, "311");
 		map.put(LovelyCatConstants.MSG_SEND_ROBOT_WXID, sendHandlerContext.getMessageSend().getLocalRobotId());
 		map.put(LovelyCatConstants.MSG_SEND_GROUP_WXID, sendHandlerContext.getMessageSend().getToGroupId()); 
 		map.put(LovelyCatConstants.MSG_SEND_FRIEND_WXID, sendHandlerContext.getMessageSend().getToUserId()); 
 		
 		
-		return map;
+		
 	}
 
 

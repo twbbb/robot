@@ -12,7 +12,7 @@ public abstract class BaseLovelyCatMsgRecHandler implements IMessageReceiveHandl
 	public IMessageReceiveHandler wapper;
 	
 	
-	public abstract MessageReceive handlerMyReceivMsg(ReceiveHandlerContext receiveHandlerContext);
+	public abstract void handlerMyReceivMsg(ReceiveHandlerContext receiveHandlerContext);
 	public abstract boolean checkMyType(ReceiveHandlerContext receiveHandlerContext);
 	
 	@Override
@@ -49,7 +49,7 @@ public abstract class BaseLovelyCatMsgRecHandler implements IMessageReceiveHandl
 		messageReceive.setMsgType(StringConvertUtils.toString(paramMap.get("type")));
 		messageReceive.setMsgSubType(StringConvertUtils.toString(paramMap.get("msg_type")));
 		
-		messageReceive.setMsgId(rid+"_"+localRobotId); 
+		messageReceive.setMsgId( time+"_"+localRobotId+"_"+rid); 
 		messageReceive.setTimestamp(new Date(Long.parseLong(time)*1000l));
 		messageReceive.setCol1("");
 		messageReceive.setCol2("");
@@ -64,15 +64,14 @@ public abstract class BaseLovelyCatMsgRecHandler implements IMessageReceiveHandl
 		return checkMyType(receiveHandlerContext);
 	}
 
-	public MessageReceive handlerReceivMsg(ReceiveHandlerContext receiveHandlerContext) {
+	public void handlerReceivMsg(ReceiveHandlerContext receiveHandlerContext) {
 		if(checkType(receiveHandlerContext)){
-			return this.handlerMyReceivMsg(receiveHandlerContext);
+		 this.handlerMyReceivMsg(receiveHandlerContext);
 		}else{
 			if(wapper!=null){
-				return wapper.handlerReceivMsg(receiveHandlerContext);
+			 wapper.handlerReceivMsg(receiveHandlerContext);
 			} 
 		}
-		return null;
 	}
 	
 	

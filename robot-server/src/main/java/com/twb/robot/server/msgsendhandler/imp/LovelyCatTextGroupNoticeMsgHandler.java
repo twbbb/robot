@@ -32,8 +32,8 @@ public class LovelyCatTextGroupNoticeMsgHandler extends BaseLovelyCatMsgSendHand
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Map handlerMyMessageSend(SendHandlerContext sendHandlerContext) {
-		Map map = new HashMap();
+	public void handlerMyMessageSend(SendHandlerContext sendHandlerContext) {
+		Map map = sendHandlerContext.getSendParam();
 		map.put(LovelyCatConstants.MSG_SEND_TYPE, "102");
 		String msg="";
 		try {
@@ -49,7 +49,7 @@ public class LovelyCatTextGroupNoticeMsgHandler extends BaseLovelyCatMsgSendHand
 		map.put(LovelyCatConstants.MSG_SEND_AT_WXID, sendHandlerContext.getMessageSend().getToUserId());
 		map.put(LovelyCatConstants.MSG_SEND_AT_NAME, sendHandlerContext.getMessageSend().getToUserName());
 
-		return map;
+		
 	}
 
 }

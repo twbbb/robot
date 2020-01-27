@@ -12,8 +12,7 @@ public class LovelyCatOtherMsgRecHandler extends BaseLovelyCatMsgRecHandler{
 	}
 	
 	@Override	
-	public MessageReceive handlerMyReceivMsg(ReceiveHandlerContext receiveHandlerContext) {
-		return receiveHandlerContext.getMessageReceive();
+	public void handlerMyReceivMsg(ReceiveHandlerContext receiveHandlerContext) {
 	}
 
 	@Override

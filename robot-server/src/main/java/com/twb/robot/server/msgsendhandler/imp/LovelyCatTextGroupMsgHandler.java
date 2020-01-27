@@ -30,8 +30,8 @@ public class LovelyCatTextGroupMsgHandler extends BaseLovelyCatMsgSendHandler{
 	}
 
 	@Override
-	public Map handlerMyMessageSend(SendHandlerContext sendHandlerContext) {
-		Map map = new HashMap();
+	public void handlerMyMessageSend(SendHandlerContext sendHandlerContext) {
+		Map map = sendHandlerContext.getSendParam();
 		map.put(LovelyCatConstants.MSG_SEND_TYPE, "100");
 		String msg="";
 		try {
@@ -44,7 +44,7 @@ public class LovelyCatTextGroupMsgHandler extends BaseLovelyCatMsgSendHandler{
 		map.put(LovelyCatConstants.MSG_SEND_TO_WXID, sendHandlerContext.getMessageSend().getToGroupId());
 		map.put(LovelyCatConstants.MSG_SEND_ROBOT_WXID, sendHandlerContext.getMessageSend().getLocalRobotId());
 
-		return map;
+		
 	}
 
 

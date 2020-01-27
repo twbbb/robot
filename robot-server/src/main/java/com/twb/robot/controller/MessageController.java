@@ -1,5 +1,6 @@
 package com.twb.robot.controller;
 
+import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,7 +28,8 @@ public class MessageController {
 		String returnCode="0";
 		Map paramMap = new HashMap();	
 		try {
-			
+			//body = URLDecoder.decode(body, "UTF-8");
+			logger.info("接受消息:"+body);
 			robotMessageServiceImp.handlerReceivMsg(body);
 			returnCode="1";
 		} catch (Throwable e) {

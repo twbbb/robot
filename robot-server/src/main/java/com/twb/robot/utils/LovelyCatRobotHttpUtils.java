@@ -22,7 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSONObject;
-import com.twb.robot.common.utils.StringConvertUtils;
+import com.twb.robot.config.LovelyCatConstants;
 
 public class LovelyCatRobotHttpUtils {
 	private static CloseableHttpClient httpClient = null;
@@ -37,12 +37,19 @@ public class LovelyCatRobotHttpUtils {
 		if(param==null||param.isEmpty()){
 			return null;
 		}
-		logger.debug("发送消息："+param);
+		try {
+			Thread.sleep((long) (3000 * Math.random() + 1000));
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		JSONObject paramsMap = new JSONObject(param);
 		
 		Map<String, String> data = new HashMap<>();
 		data.put("data", paramsMap.toJSONString());
-		String response = doPost("http://114.67.112.14:8073/send", data);
+		logger.debug("发送消息："+data);
+		String response = doPost(LovelyCatConstants.MSG_SEND_URL, data);
         JSONObject rspMap = JSONObject.parseObject(response);
 		logger.debug("发送结果："+rspMap);
 		return rspMap;

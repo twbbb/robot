@@ -1,5 +1,8 @@
 package com.twb.robot.bean;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.twb.robot.common.entity.MessageSend;
 
 public class SendHandlerContext {
@@ -7,6 +10,7 @@ public class SendHandlerContext {
 	protected MessageSend messageSend = new MessageSend();
 	protected String type = "";
 	protected String subType = "";
+	Map sendParam= new HashMap();	
 	public MessageSend getMessageSend() {
 		return messageSend;
 	}
@@ -25,6 +29,13 @@ public class SendHandlerContext {
 	public void setSubType(String subType) {
 		this.subType = subType;
 	}
+	public Map getSendParam() {
+		return sendParam;
+	}
+	public void setSendParam(Map sendParam) {
+		this.sendParam = sendParam;
+	}
+	
 	
 	
 	

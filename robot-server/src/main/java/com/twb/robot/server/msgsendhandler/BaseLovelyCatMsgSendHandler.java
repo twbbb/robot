@@ -1,7 +1,5 @@
 package com.twb.robot.server.msgsendhandler;
 
-import java.util.Map;
-
 import org.apache.commons.lang3.StringUtils;
 
 import com.twb.robot.bean.SendHandlerContext;
@@ -12,7 +10,7 @@ public abstract class BaseLovelyCatMsgSendHandler implements IMessageSendHandler
 	public IMessageSendHandler wapper;
 
 	
-	public abstract Map handlerMyMessageSend(SendHandlerContext sendHandlerContext);
+	public abstract void handlerMyMessageSend(SendHandlerContext sendHandlerContext);
 	public abstract String getCheckMsgType(SendHandlerContext sendHandlerContext);
 	public String getCheckMsgSubType(SendHandlerContext sendHandlerContext){
 		return "";
@@ -49,15 +47,14 @@ public abstract class BaseLovelyCatMsgSendHandler implements IMessageSendHandler
 		return checkMyType(sendHandlerContext);
 	}
 
-	public Object handlerMessageSend(SendHandlerContext sendHandlerContext) {
+	public void handlerMessageSend(SendHandlerContext sendHandlerContext) {
 		if(checkType(sendHandlerContext)){
-			return handlerMyMessageSend(sendHandlerContext);
+			 handlerMyMessageSend(sendHandlerContext);
 		}else{
 			if(wapper!=null){
-				return wapper.handlerMessageSend(sendHandlerContext);
+				 wapper.handlerMessageSend(sendHandlerContext);
 			} 
 		}
-		return null;
 	}
 
 

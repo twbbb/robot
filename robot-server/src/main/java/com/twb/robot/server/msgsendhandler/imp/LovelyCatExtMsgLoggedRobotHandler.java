@@ -19,11 +19,11 @@ public class LovelyCatExtMsgLoggedRobotHandler extends BaseLovelyCatMsgSendHandl
 
 
 	@Override
-	public Map handlerMyMessageSend(SendHandlerContext sendHandlerContext) {
-		Map map = new HashMap();
+	public void handlerMyMessageSend(SendHandlerContext sendHandlerContext) {
+		Map map = sendHandlerContext.getSendParam();
 		map.put(LovelyCatConstants.MSG_SEND_TYPE, "203");
 
-		return map;
+		
 	}
 
 

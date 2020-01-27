@@ -19,7 +19,7 @@ public class LovelyCatLinkMsgHandler extends BaseLovelyCatMsgSendHandler{
 
 
 	@Override
-	public Map handlerMyMessageSend(SendHandlerContext sendHandlerContext) {
+	public void handlerMyMessageSend(SendHandlerContext sendHandlerContext) {
 		Map linkMap = new HashMap();
 		linkMap.put(LovelyCatConstants.MSG_SEND_LINK_TEXT, sendHandlerContext.getMessageSend().getMessage());
 		linkMap.put(LovelyCatConstants.MSG_SEND_LINK_TITLE, sendHandlerContext.getMessageSend().getCol1());
@@ -27,13 +27,13 @@ public class LovelyCatLinkMsgHandler extends BaseLovelyCatMsgSendHandler{
 		linkMap.put(LovelyCatConstants.MSG_SEND_LINK_PIC, sendHandlerContext.getMessageSend().getCol3());
 
 		
-		Map map = new HashMap();
+		Map map = sendHandlerContext.getSendParam();
 		map.put(LovelyCatConstants.MSG_SEND_TYPE, "107");
 		map.put(LovelyCatConstants.MSG_SEND_MSG, linkMap);
 		map.put(LovelyCatConstants.MSG_SEND_TO_WXID, sendHandlerContext.getMessageSend().getToUserId());
 		map.put(LovelyCatConstants.MSG_SEND_ROBOT_WXID, sendHandlerContext.getMessageSend().getLocalRobotId());
 
-		return map;
+		
 	}
 
 
@@ -45,7 +45,7 @@ public class LovelyCatLinkMsgHandler extends BaseLovelyCatMsgSendHandler{
 
 	@Override
 	public String getCheckMsgSubType(SendHandlerContext sendHandlerContext) {
-		return RobotSendConstants.MSG_SUBTYPE_IMG;
+		return RobotSendConstants.MSG_SUBTYPE_LINK;
 	}
 
 }

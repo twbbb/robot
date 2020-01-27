@@ -14,16 +14,15 @@ public abstract class BaseRobotServer  implements IRobotServer{
 	
 	public abstract MessageReceive handlerMyReceivMsg(Object obj);
 	
-	public abstract Map handlerMySendMsg(MessageSend messageSend);
+	public abstract void handlerMySendMsg(MessageSend messageSend);
 
-	public abstract Map sendMyMsg(Object obj);
 	
 	public MessageReceive handlerReceivMsg(Object obj){
 		return handlerMyReceivMsg(obj);
 	}
 	
-	public Map handlerSendMsg(MessageSend messageSend){
-		return handlerMySendMsg(messageSend);
+	public void handlerSendMsg(MessageSend messageSend){
+		 handlerMySendMsg(messageSend);
 	}
 
 

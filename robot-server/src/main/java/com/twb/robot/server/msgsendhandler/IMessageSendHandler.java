@@ -6,7 +6,7 @@ public interface IMessageSendHandler {
 
 	public void init(SendHandlerContext sendHandlerContext);
 	
-	public  Object handlerMessageSend(SendHandlerContext sendHandlerContext);
+	public  void handlerMessageSend(SendHandlerContext sendHandlerContext);
 	
 	public boolean checkType(SendHandlerContext sendHandlerContext);
 }
