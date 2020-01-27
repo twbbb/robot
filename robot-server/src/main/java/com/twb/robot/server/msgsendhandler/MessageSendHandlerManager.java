@@ -20,10 +20,8 @@ import com.twb.robot.server.msgsendhandler.imp.LovelyCatTextGroupNoticeMsgHandle
 import com.twb.robot.server.msgsendhandler.imp.LovelyCatTextMsgHandler;
 
 public class MessageSendHandlerManager {
-
-
-	public static IMessageSendHandler getMessageSendHandler(){
-		IMessageSendHandler messageSendHandler = null ;
+	public static IMessageSendHandler messageSendHandler = null ;
+	static{
 		messageSendHandler = new LovelyCatExtMsgFriendListHandler(messageSendHandler);
 		messageSendHandler = new LovelyCatExtMsgGroupListHandler(messageSendHandler);
 		messageSendHandler = new LovelyCatExtMsgGroupMemberHandler(messageSendHandler);
@@ -42,6 +40,9 @@ public class MessageSendHandlerManager {
 		messageSendHandler = new LovelyCatTextGroupMsgHandler(messageSendHandler);
 		messageSendHandler = new LovelyCatTextGroupNoticeMsgHandler(messageSendHandler);
 		messageSendHandler = new LovelyCatTextMsgHandler(messageSendHandler);
+	}	
+
+	public static IMessageSendHandler getMessageSendHandler(){
 		
 		return messageSendHandler;
 	}

@@ -4,13 +4,15 @@ import com.twb.robot.server.msgrechandler.imp.LovelyCatImgMsgRecHandler;
 import com.twb.robot.server.msgrechandler.imp.LovelyCatOtherMsgRecHandler;
 
 public class MessageRecHandlerManager {
-
-
-	public static IMessageReceiveHandler getMessageReceiveHandler(){
-		IMessageReceiveHandler messageReceiveHandler = null ;
+	public static 	IMessageReceiveHandler messageReceiveHandler = null ;
+	static{
 		messageReceiveHandler = new LovelyCatOtherMsgRecHandler(messageReceiveHandler);
 		messageReceiveHandler = new LovelyCatImgMsgRecHandler(messageReceiveHandler);
 
+	}
+
+	public static IMessageReceiveHandler getMessageReceiveHandler(){
+		
 		return messageReceiveHandler;
 	}
 	
