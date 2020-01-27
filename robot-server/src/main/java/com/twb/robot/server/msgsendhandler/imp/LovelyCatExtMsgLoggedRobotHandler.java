@@ -3,6 +3,7 @@ package com.twb.robot.server.msgsendhandler.imp;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.twb.robot.bean.SendHandlerContext;
 import com.twb.robot.common.config.RobotSendConstants;
 import com.twb.robot.config.LovelyCatConstants;
 import com.twb.robot.server.msgsendhandler.BaseLovelyCatMsgSendHandler;
@@ -18,7 +19,7 @@ public class LovelyCatExtMsgLoggedRobotHandler extends BaseLovelyCatMsgSendHandl
 
 
 	@Override
-	public Map handlerMyMessageSend() {
+	public Map handlerMyMessageSend(SendHandlerContext sendHandlerContext) {
 		Map map = new HashMap();
 		map.put(LovelyCatConstants.MSG_SEND_TYPE, "203");
 
@@ -27,7 +28,7 @@ public class LovelyCatExtMsgLoggedRobotHandler extends BaseLovelyCatMsgSendHandl
 
 
 	@Override
-	public String getCheckMsgType() {
+	public String getCheckMsgType(SendHandlerContext sendHandlerContext) {
 		return RobotSendConstants.MSG_TYPE_LOGGEDROBOT;
 	}
 

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.twb.robot.bean.SendHandlerContext;
 import com.twb.robot.common.config.RobotSendConstants;
 import com.twb.robot.config.LovelyCatConstants;
 import com.twb.robot.server.msgsendhandler.BaseLovelyCatMsgSendHandler;
@@ -20,14 +21,14 @@ public class LovelyCatExtMsgFriendListHandler extends BaseLovelyCatMsgSendHandle
 
 
 	@Override
-	public Map handlerMyMessageSend() {
+	public Map handlerMyMessageSend(SendHandlerContext sendHandlerContext) {
 		Map map = new HashMap();
 		map.put(LovelyCatConstants.MSG_SEND_TYPE, "204");
 		String isRefresh=LovelyCatConstants.MSG_SEND_IS_REFRESH_Y;
-		if(!StringUtils.isEmpty(messageSend.getCol1())){
-			isRefresh=messageSend.getCol1();
+		if(!StringUtils.isEmpty(sendHandlerContext.getMessageSend().getCol1())){
+			isRefresh=sendHandlerContext.getMessageSend().getCol1();
 		}
-		map.put(LovelyCatConstants.MSG_SEND_ROBOT_WXID, messageSend.getLocalRobotId());
+		map.put(LovelyCatConstants.MSG_SEND_ROBOT_WXID, sendHandlerContext.getMessageSend().getLocalRobotId());
 		map.put(LovelyCatConstants.MSG_SEND_IS_REFRESH, isRefresh);
 
 		
@@ -36,7 +37,7 @@ public class LovelyCatExtMsgFriendListHandler extends BaseLovelyCatMsgSendHandle
 
 
 	@Override
-	public String getCheckMsgType() {
+	public String getCheckMsgType(SendHandlerContext sendHandlerContext) {
 		return RobotSendConstants.MSG_TYPE_FRIENDLIST;
 	}
 

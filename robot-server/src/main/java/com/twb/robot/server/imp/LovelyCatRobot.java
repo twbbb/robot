@@ -4,6 +4,8 @@ import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.twb.robot.bean.ReceiveHandlerContext;
+import com.twb.robot.bean.SendHandlerContext;
 import com.twb.robot.common.config.RobotCommonConstants;
 import com.twb.robot.common.entity.MessageReceive;
 import com.twb.robot.common.entity.MessageSend;
@@ -48,8 +50,10 @@ public class LovelyCatRobot extends BaseRobotServer {
 		}
 
 		IMessageReceiveHandler messageReceiveHandler = MessageRecHandlerManager.getMessageReceiveHandler();
-		messageReceiveHandler.init(paramMap);
-		MessageReceive messageReceive = messageReceiveHandler.handlerReceivMsg();
+		ReceiveHandlerContext receiveHandlerContext = new ReceiveHandlerContext();
+		receiveHandlerContext.setReceiveParamMap(paramMap);
+		messageReceiveHandler.init(receiveHandlerContext);
+		MessageReceive messageReceive = messageReceiveHandler.handlerReceivMsg(receiveHandlerContext);
 		
 		
 			
@@ -64,8 +68,10 @@ public class LovelyCatRobot extends BaseRobotServer {
 		}
 		
 		IMessageSendHandler messageSendHandler = MessageSendHandlerManager.getMessageSendHandler();
-		messageSendHandler.init(messageSend);
-		Map sendParam =  (Map) messageSendHandler.handlerMessageSend();
+		SendHandlerContext sendHandlerContext = new SendHandlerContext();
+		sendHandlerContext.setMessageSend(messageSend);
+		messageSendHandler.init(sendHandlerContext);
+		Map sendParam =  (Map) messageSendHandler.handlerMessageSend(sendHandlerContext);
 		Map resultMap = LovelyCatRobotHttpUtils.sendMsg(sendParam);
 		if(checkSuccess(resultMap)){
 			messageSend.setSendState(RobotCommonConstants.MESSAGE_SEND_SUC_STATE);

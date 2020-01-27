@@ -4,26 +4,25 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.twb.robot.bean.SendHandlerContext;
 import com.twb.robot.common.entity.MessageSend;
 
 public abstract class BaseLovelyCatMsgSendHandler implements IMessageSendHandler {
 
 	public IMessageSendHandler wapper;
-	protected MessageSend messageSend = new MessageSend();
-	protected String type = "";
-	protected String subType = "";
+
 	
-	public abstract Map handlerMyMessageSend();
-	public abstract String getCheckMsgType();
-	public String getCheckMsgSubType(){
+	public abstract Map handlerMyMessageSend(SendHandlerContext sendHandlerContext);
+	public abstract String getCheckMsgType(SendHandlerContext sendHandlerContext);
+	public String getCheckMsgSubType(SendHandlerContext sendHandlerContext){
 		return "";
 	}
 
-	public boolean checkMyType(){
-		if(!getCheckMsgType().equals(getType())){
+	public boolean checkMyType(SendHandlerContext sendHandlerContext){
+		if(!getCheckMsgType(sendHandlerContext).equals(sendHandlerContext.getType())){
 			return false;
 		}
-		if(!StringUtils.isEmpty(getCheckMsgSubType())&&!getCheckMsgSubType().equals(getSubType())){
+		if(!StringUtils.isEmpty(getCheckMsgSubType(sendHandlerContext))&&!getCheckMsgSubType(sendHandlerContext).equals(sendHandlerContext.getSubType())){
 			return false;
 		}
 		
@@ -33,57 +32,33 @@ public abstract class BaseLovelyCatMsgSendHandler implements IMessageSendHandler
 	}
 	
 	@Override
-	public void init(MessageSend messageSend) {
-		if(messageSend==null){
+	public void init(SendHandlerContext sendHandlerContext) {
+		if(sendHandlerContext.getMessageSend()==null){
 			return;
 		}
-		type = messageSend.getMsgType();
-		subType =messageSend.getMsgSubType();
+		MessageSend messageSend = sendHandlerContext.getMessageSend();
+		String type = messageSend.getMsgType();
+		String subType =messageSend.getMsgSubType();
+		sendHandlerContext.setType(type);
+		sendHandlerContext.setSubType(subType);
 		
 	}
 
 
-	public boolean checkType() {
-		return checkMyType();
+	public boolean checkType(SendHandlerContext sendHandlerContext) {
+		return checkMyType(sendHandlerContext);
 	}
 
-	public Object handlerMessageSend() {
-		if(checkType()){
-			return handlerMyMessageSend();
+	public Object handlerMessageSend(SendHandlerContext sendHandlerContext) {
+		if(checkType(sendHandlerContext)){
+			return handlerMyMessageSend(sendHandlerContext);
 		}else{
 			if(wapper!=null){
-				wapper.init(messageSend);
-				return wapper.handlerMessageSend();
+				return wapper.handlerMessageSend(sendHandlerContext);
 			} 
 		}
 		return null;
 	}
-	public IMessageSendHandler getWapper() {
-		return wapper;
-	}
-	public void setWapper(IMessageSendHandler wapper) {
-		this.wapper = wapper;
-	}
-	public MessageSend getMessageSend() {
-		return messageSend;
-	}
-	public void setMessageSend(MessageSend messageSend) {
-		this.messageSend = messageSend;
-	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
-	public String getSubType() {
-		return subType;
-	}
-	public void setSubType(String subType) {
-		this.subType = subType;
-	}
-	
-	
 
 
 

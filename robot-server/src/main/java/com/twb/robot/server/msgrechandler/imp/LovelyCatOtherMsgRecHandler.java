@@ -1,5 +1,6 @@
 package com.twb.robot.server.msgrechandler.imp;
 
+import com.twb.robot.bean.ReceiveHandlerContext;
 import com.twb.robot.common.entity.MessageReceive;
 import com.twb.robot.server.msgrechandler.BaseLovelyCatMsgRecHandler;
 import com.twb.robot.server.msgrechandler.IMessageReceiveHandler;
@@ -11,12 +12,12 @@ public class LovelyCatOtherMsgRecHandler extends BaseLovelyCatMsgRecHandler{
 	}
 	
 	@Override	
-	public MessageReceive handlerMyReceivMsg() {
-		return this.getMessageReceive();
+	public MessageReceive handlerMyReceivMsg(ReceiveHandlerContext receiveHandlerContext) {
+		return receiveHandlerContext.getMessageReceive();
 	}
 
 	@Override
-	public boolean checkMyType() {
+	public boolean checkMyType(ReceiveHandlerContext receiveHandlerContext) {
 		return true;
 	}
 

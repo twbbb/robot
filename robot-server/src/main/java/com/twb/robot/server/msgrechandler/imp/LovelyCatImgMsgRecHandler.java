@@ -1,5 +1,6 @@
 package com.twb.robot.server.msgrechandler.imp;
 
+import com.twb.robot.bean.ReceiveHandlerContext;
 import com.twb.robot.common.config.RobotRecevieConstants;
 import com.twb.robot.common.entity.MessageReceive;
 import com.twb.robot.common.utils.StringConvertUtils;
@@ -14,15 +15,15 @@ public class LovelyCatImgMsgRecHandler extends BaseLovelyCatMsgRecHandler{
 	
 	
 	@Override	
-	public MessageReceive handlerMyReceivMsg() {
-		MessageReceive messageReceive =  this.getMessageReceive();
-		messageReceive.setCol1(StringConvertUtils.toString(this.getParamMap().get("file_url")));
+	public MessageReceive handlerMyReceivMsg(ReceiveHandlerContext receiveHandlerContext) {
+		MessageReceive messageReceive =  receiveHandlerContext.getMessageReceive();
+		messageReceive.setCol1(StringConvertUtils.toString(receiveHandlerContext.getReceiveParamMap().get("file_url")));
 		return messageReceive;
 	}
 
 	@Override
-	public boolean checkMyType() {
-		if(RobotRecevieConstants.MSG_SUBTYPE_IMG.equals(this.getSubType())){
+	public boolean checkMyType(ReceiveHandlerContext receiveHandlerContext) {
+		if(RobotRecevieConstants.MSG_SUBTYPE_IMG.equals(receiveHandlerContext.getSubType())){
 			return true;
 		}
 		else{

@@ -1,44 +1,44 @@
 package com.twb.robot.server.msgrechandler;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
+import com.twb.robot.bean.ReceiveHandlerContext;
 import com.twb.robot.common.entity.MessageReceive;
 import com.twb.robot.common.utils.StringConvertUtils;
 
 public abstract class BaseLovelyCatMsgRecHandler implements IMessageReceiveHandler {
 
 	public IMessageReceiveHandler wapper;
-	Map paramMap = new HashMap();
-	MessageReceive messageReceive = new MessageReceive();
-	String type = "";
-	String subType = "";
 	
-	public abstract MessageReceive handlerMyReceivMsg();
-	public abstract boolean checkMyType();
+	
+	public abstract MessageReceive handlerMyReceivMsg(ReceiveHandlerContext receiveHandlerContext);
+	public abstract boolean checkMyType(ReceiveHandlerContext receiveHandlerContext);
 	
 	@Override
-	public void init(Object obj) {
-		if(obj==null||!(obj instanceof Map)){
+	public void init(ReceiveHandlerContext receiveHandlerContext) {
+		if(receiveHandlerContext.getReceiveParamMap()==null||receiveHandlerContext.getReceiveParamMap().isEmpty()){
 			return;
 		}
-		this.paramMap =(Map) obj;
-		type = StringConvertUtils.toString(paramMap.get("type"));
-		subType = StringConvertUtils.toString(paramMap.get("msg_type"));
+		String type = StringConvertUtils.toString(receiveHandlerContext.getReceiveParamMap().get("type"));
+		String subType = StringConvertUtils.toString(receiveHandlerContext.getReceiveParamMap().get("msg_type"));
 		
+		receiveHandlerContext.setType(type);
+		receiveHandlerContext.setSubType(subType);
+		initMessageReceive(receiveHandlerContext);
 	}
 	
-	public void initMessageReceive(){
-		if(paramMap==null||paramMap.isEmpty()){
-			return;
-		}		
+	public void initMessageReceive(ReceiveHandlerContext receiveHandlerContext){
+		Map paramMap = receiveHandlerContext.getReceiveParamMap();
+		
 		String time = StringConvertUtils.toString(paramMap.get("time"));
 		String localRobotId = StringConvertUtils.toString(paramMap.get("robot_wxid"));
 		String rid = StringConvertUtils.toString(paramMap.get("rid"));
 		String from_wxid = StringConvertUtils.toString(paramMap.get("from_wxid"));
 		String from_name = StringConvertUtils.toString(paramMap.get("from_name"));
-
+		
+		MessageReceive messageReceive = new MessageReceive();
+		receiveHandlerContext.setMessageReceive(messageReceive);
 		
 		messageReceive.setFromGroupId(from_wxid);
 		messageReceive.setFromGroupName(from_name); 
@@ -60,45 +60,19 @@ public abstract class BaseLovelyCatMsgRecHandler implements IMessageReceiveHandl
 	
 
 
-	public boolean checkType() {
-		return checkMyType();
+	public boolean checkType(ReceiveHandlerContext receiveHandlerContext ) {
+		return checkMyType(receiveHandlerContext);
 	}
 
-	public MessageReceive handlerReceivMsg() {
-		if(checkType()){
-			initMessageReceive();
-			return this.handlerMyReceivMsg();
+	public MessageReceive handlerReceivMsg(ReceiveHandlerContext receiveHandlerContext) {
+		if(checkType(receiveHandlerContext)){
+			return this.handlerMyReceivMsg(receiveHandlerContext);
 		}else{
 			if(wapper!=null){
-				wapper.init(this.getParamMap());
-				return wapper.handlerReceivMsg();
+				return wapper.handlerReceivMsg(receiveHandlerContext);
 			} 
 		}
 		return null;
-	}
-	public Map getParamMap() {
-		return paramMap;
-	}
-	public void setParamMap(Map paramMap) {
-		this.paramMap = paramMap;
-	}
-	public MessageReceive getMessageReceive() {
-		return messageReceive;
-	}
-	public void setMessageReceive(MessageReceive messageReceive) {
-		this.messageReceive = messageReceive;
-	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
-	public String getSubType() {
-		return subType;
-	}
-	public void setSubType(String subType) {
-		this.subType = subType;
 	}
 	
 	

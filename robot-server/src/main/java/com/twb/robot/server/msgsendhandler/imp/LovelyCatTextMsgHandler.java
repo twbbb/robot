@@ -5,6 +5,7 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.twb.robot.bean.SendHandlerContext;
 import com.twb.robot.common.config.RobotSendConstants;
 import com.twb.robot.config.LovelyCatConstants;
 import com.twb.robot.server.msgsendhandler.BaseLovelyCatMsgSendHandler;
@@ -18,31 +19,31 @@ public class LovelyCatTextMsgHandler extends BaseLovelyCatMsgSendHandler{
 
 
 	@Override
-	public String getCheckMsgType() {
+	public String getCheckMsgType(SendHandlerContext sendHandlerContext) {
 		return RobotSendConstants.MSG_TYPE_PRIVATE_CHAT;
 	}
 
 
 	@Override
-	public String getCheckMsgSubType() {
+	public String getCheckMsgSubType(SendHandlerContext sendHandlerContext) {
 		return RobotSendConstants.MSG_SUBTYPE_TEXT;
 	}
 
 
 	@Override
-	public Map handlerMyMessageSend() {
+	public Map handlerMyMessageSend(SendHandlerContext sendHandlerContext) {
 		Map map = new HashMap();
 		map.put(LovelyCatConstants.MSG_SEND_TYPE, "100");
 		String msg="";
 		try {
-			msg = URLEncoder.encode(messageSend.getMessage(), "UTF-8");
+			msg = URLEncoder.encode(sendHandlerContext.getMessageSend().getMessage(), "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
-			throw new RuntimeException("URLEncoder异常："+messageSend.getId(),e);
+			throw new RuntimeException("URLEncoder异常："+sendHandlerContext.getMessageSend().getId(),e);
 		} 
 		map.put(LovelyCatConstants.MSG_SEND_MSG, msg);
-		map.put(LovelyCatConstants.MSG_SEND_TO_WXID, messageSend.getToUserId());
-		map.put(LovelyCatConstants.MSG_SEND_ROBOT_WXID, messageSend.getLocalRobotId());
+		map.put(LovelyCatConstants.MSG_SEND_TO_WXID, sendHandlerContext.getMessageSend().getToUserId());
+		map.put(LovelyCatConstants.MSG_SEND_ROBOT_WXID, sendHandlerContext.getMessageSend().getLocalRobotId());
 
 		return map;
 	}

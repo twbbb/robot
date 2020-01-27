@@ -1,12 +1,12 @@
 package com.twb.robot.server.msgsendhandler;
 
-import com.twb.robot.common.entity.MessageSend;
+import com.twb.robot.bean.SendHandlerContext;
 
 public interface IMessageSendHandler {
 
-	public void init(MessageSend messageSend);
+	public void init(SendHandlerContext sendHandlerContext);
 	
-	public  Object handlerMessageSend();
+	public  Object handlerMessageSend(SendHandlerContext sendHandlerContext);
 	
-	public boolean checkType();
+	public boolean checkType(SendHandlerContext sendHandlerContext);
 }

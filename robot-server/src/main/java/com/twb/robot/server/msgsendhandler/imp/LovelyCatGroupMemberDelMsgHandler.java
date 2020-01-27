@@ -3,6 +3,7 @@ package com.twb.robot.server.msgsendhandler.imp;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.twb.robot.bean.SendHandlerContext;
 import com.twb.robot.common.config.RobotSendConstants;
 import com.twb.robot.config.LovelyCatConstants;
 import com.twb.robot.server.msgsendhandler.BaseLovelyCatMsgSendHandler;
@@ -18,19 +19,19 @@ public class LovelyCatGroupMemberDelMsgHandler extends BaseLovelyCatMsgSendHandl
 
 
 	@Override
-	public Map handlerMyMessageSend() {
+	public Map handlerMyMessageSend(SendHandlerContext sendHandlerContext) {
 		Map map = new HashMap();
 		map.put(LovelyCatConstants.MSG_SEND_TYPE, "306");
-		map.put(LovelyCatConstants.MSG_SEND_ROBOT_WXID, messageSend.getLocalRobotId());
-		map.put(LovelyCatConstants.MSG_SEND_GROUP_WXID, messageSend.getToGroupId()); 
-		map.put(LovelyCatConstants.MSG_SEND_MEMBER_WXID, messageSend.getToUserId()); 
+		map.put(LovelyCatConstants.MSG_SEND_ROBOT_WXID, sendHandlerContext.getMessageSend().getLocalRobotId());
+		map.put(LovelyCatConstants.MSG_SEND_GROUP_WXID, sendHandlerContext.getMessageSend().getToGroupId()); 
+		map.put(LovelyCatConstants.MSG_SEND_MEMBER_WXID, sendHandlerContext.getMessageSend().getToUserId()); 
 		
 		return map;
 	}
 
 
 	@Override
-	public String getCheckMsgType() {
+	public String getCheckMsgType(SendHandlerContext sendHandlerContext) {
 		return RobotSendConstants.MSG_TYPE_GROUPMEMBERDEL;
 	}
 
