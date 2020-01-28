@@ -12,10 +12,13 @@ import org.springframework.stereotype.Service;
 
 import com.twb.robot.common.config.RobotCommonConstants;
 import com.twb.robot.common.dao.MessageReceiveRepository;
+import com.twb.robot.common.dao.MessageSendHisRepository;
+import com.twb.robot.common.dao.MessageSendRepository;
 import com.twb.robot.common.dao.MsgReceiveQueueRepository;
 import com.twb.robot.common.entity.MessageReceive;
 import com.twb.robot.common.entity.MessageReceiveQueue;
 import com.twb.robot.common.entity.MessageSend;
+import com.twb.robot.common.entity.MessageSendHis;
 import com.twb.robot.server.RobotServerManager;
 import com.twb.robot.service.RobotMessageService;
 
@@ -30,6 +33,14 @@ public class RobotMessageServiceImp implements RobotMessageService
 	
 	@Resource
     private MsgReceiveQueueRepository msgReceiveQueueRepository;
+	
+	@Resource
+    private MessageSendRepository messageSendRepository;
+	@Resource
+    private MessageSendHisRepository messageSendHisRepository;
+	
+	
+	
 	
 	
 	
@@ -54,7 +65,40 @@ public class RobotMessageServiceImp implements RobotMessageService
 
 	@Transactional
 	public void handlerSendMsg(MessageSend messageSend) {
-		
+		try {
+			RobotServerManager.getRobotServer().handlerSendMsg(messageSend);
+		} catch (Exception e) {
+			messageSend.setSendState(RobotCommonConstants.MESSAGE_SEND_FAIL_STATE);
+			messageSend.setSendStateMsg("异常："+e.getMessage());
+			e.printStackTrace();
+		}
+		if(RobotCommonConstants.MESSAGE_SEND_SUC_STATE.equals(messageSend.getSendState())){
+			MessageSendHis messageSendHis = new MessageSendHis();
+			messageSendHis.setCol1(messageSend.getCol1());
+			messageSendHis.setCol2(messageSend.getCol2());
+			messageSendHis.setCol3(messageSend.getCol3());
+			messageSendHis.setCreateDate(messageSend.getCreateDate());
+			messageSendHis.setId(messageSend.getId());
+			messageSendHis.setLocalRobotId(messageSend.getLocalRobotId());
+			messageSendHis.setMessage(messageSend.getMessage());
+			messageSendHis.setMsgSubType(messageSend.getMsgSubType());
+			messageSendHis.setMsgType(messageSend.getMsgType());
+			messageSendHis.setSendState(messageSend.getSendState());
+			messageSendHis.setSendStateMsg(messageSend.getSendStateMsg());
+			messageSendHis.setToGroupId(messageSend.getToGroupId());
+			messageSendHis.setToUserId(messageSend.getToUserId());
+			messageSendHis.setToGroupName(messageSend.getToGroupName());
+			messageSendHis.setToUserName(messageSend.getToUserName());
+			messageSendHis.setUpdateDate(new Date());
+			messageSendHis.setBusCode(messageSend.getBusCode());
+			
+			messageSendRepository.delete(messageSend);
+			messageSendHisRepository.save(messageSendHis);
+		}else{
+			messageSend.setUpdateDate(new Date());
+			messageSendRepository.save(messageSend);
+
+		}
 	}
 	
 
