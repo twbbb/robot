@@ -13,8 +13,8 @@ import javax.persistence.TemporalType;
 
 //使用JPA注解配置映射关系
 @Entity // 告诉JPA这是一个实体类（和数据表映射的类）
-@Table(name = "message_receive_tache_flow") // @Table来指定和哪个数据表对应;如果省略默认表名就是user；
-public class MessageReceiveTacheFlow
+@Table(name = "message_receive_tache_flow_his") // @Table来指定和哪个数据表对应;如果省略默认表名就是user；
+public class MessageReceiveTacheFlowHis
 {
 
 

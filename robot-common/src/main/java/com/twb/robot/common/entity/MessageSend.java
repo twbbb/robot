@@ -56,6 +56,10 @@ public class MessageSend
 	private String sendState  =""; //  
 	@Column(columnDefinition = "varchar(1000)")
 	private String sendStateMsg  =""; //  
+
+	@Column(columnDefinition = "varchar(20)")
+	private String busCode  =""; //  消息对应的业务类型
+	
 	public Integer getId() {
 		return id;
 	}
@@ -153,6 +157,12 @@ public class MessageSend
 	}
 	public void setSendState(String sendState) {
 		this.sendState = sendState;
+	}
+	public String getBusCode() {
+		return busCode;
+	}
+	public void setBusCode(String busCode) {
+		this.busCode = busCode;
 	}
 	
 	
