@@ -23,7 +23,7 @@ public class MessageReceiveQueueTask {
 	
 
  	@Scheduled(cron = "0/5 * * * * ?")
-	public void getDate() {
+	public void handlerMsgRecData() {
  		logger.info("run once");
 
  		List<Map>  list = messageReceiveQueueServiceImp.getMessageReceiveQueueList();
