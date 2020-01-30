@@ -33,8 +33,6 @@ public class MessageReceiveTache
 	@Column(columnDefinition = "varchar(2) default '0'")
 	private String state =""; // 状态，0开启，1，关闭
 
-	@Column(columnDefinition = "varchar(200)")
-	private String remark  =""; //备注
 
 	public Integer getId() {
 		return id;
@@ -84,13 +82,6 @@ public class MessageReceiveTache
 		this.state = state;
 	}
 
-	public String getRemark() {
-		return remark;
-	}
-
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
 	
 	
 	

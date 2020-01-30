@@ -29,15 +29,109 @@ public class MessageReceiveTacheHandler
 	@Column(columnDefinition = "varchar(4000)")
 	private String flowCheck ; //  步骤是否执行检查
 	
-	@Column(columnDefinition = "varchar(2)")
-	private String flowType ; // 步骤处理类型，1.执行sql，2.执行java代码
+	
+	@Column(columnDefinition = "varchar(1000)")
+	private String flowClass ; //  步骤处理类
+	
 	
 	@Column(columnDefinition = "varchar(4000)")
-	private String flowContent ; //  步骤处理内容
+	private String col1 ; // 
+	
+	@Column(columnDefinition = "varchar(1000)")
+	private String col2 ; //
+	
+	@Column(columnDefinition = "varchar(1000)")
+	private String col3 ; //
 	
 	@Column(columnDefinition = "varchar(2) default '0'")
 	private String state =""; // 状态，0开启，1，关闭
 
 	@Column(columnDefinition = "varchar(200)")
 	private String remark  =""; //备注
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getTacheCode() {
+		return tacheCode;
+	}
+
+	public void setTacheCode(String tacheCode) {
+		this.tacheCode = tacheCode;
+	}
+
+	public Integer getFlowNum() {
+		return flowNum;
+	}
+
+	public void setFlowNum(Integer flowNum) {
+		this.flowNum = flowNum;
+	}
+
+	public String getFlowCheck() {
+		return flowCheck;
+	}
+
+	public void setFlowCheck(String flowCheck) {
+		this.flowCheck = flowCheck;
+	}
+
+	
+
+	public String getFlowClass() {
+		return flowClass;
+	}
+
+	public void setFlowClass(String flowClass) {
+		this.flowClass = flowClass;
+	}
+
+	public String getCol1() {
+		return col1;
+	}
+
+	public void setCol1(String col1) {
+		this.col1 = col1;
+	}
+
+	public String getCol2() {
+		return col2;
+	}
+
+	public void setCol2(String col2) {
+		this.col2 = col2;
+	}
+
+	public String getCol3() {
+		return col3;
+	}
+
+	public void setCol3(String col3) {
+		this.col3 = col3;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+	
+	
+	
+	
 }

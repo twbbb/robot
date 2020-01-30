@@ -28,7 +28,17 @@ public class MessageReceiveTacheParam
 	private String paramKey ; // 键
 	
 	@Column(columnDefinition = "varchar(1000)")
-	private String paramValue ; // 值
+	private String coeda ; // 值a
+	
+	@Column(columnDefinition = "varchar(1000)")
+	private String coedb ; // 值b
+	
+	
+	@Column(columnDefinition = "varchar(1000)")
+	private String coedc ; // 值c
+	
+	@Column(columnDefinition = "varchar(1000)")
+	private String coedd ; // 值d
 	
 	
 	@Column(columnDefinition = "varchar(200)")
@@ -54,14 +64,39 @@ public class MessageReceiveTacheParam
 		this.paramKey = paramKey;
 	}
 
-	public String getParamValue() {
-		return paramValue;
+
+
+	public String getCoeda() {
+		return coeda;
 	}
 
-	public void setParamValue(String paramValue) {
-		this.paramValue = paramValue;
+	public void setCoeda(String coeda) {
+		this.coeda = coeda;
 	}
 
+	public String getCoedb() {
+		return coedb;
+	}
+
+	public void setCoedb(String coedb) {
+		this.coedb = coedb;
+	}
+
+	public String getCoedc() {
+		return coedc;
+	}
+
+	public void setCoedc(String coedc) {
+		this.coedc = coedc;
+	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
 
 	public String getRemark() {
 		return remark;
@@ -69,6 +104,14 @@ public class MessageReceiveTacheParam
 
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+
+	public String getCoedd() {
+		return coedd;
+	}
+
+	public void setCoedd(String coedd) {
+		this.coedd = coedd;
 	}
 
 	

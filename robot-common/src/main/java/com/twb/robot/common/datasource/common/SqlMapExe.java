@@ -1265,7 +1265,7 @@ public class SqlMapExe implements java.io.Serializable{
 		for (int i = 0; i < fieldcount; i++)
 		{
 			ColumnTypeName = rs.getMetaData().getColumnTypeName(i + 1);
-			ColumnName = rs.getMetaData().getColumnName(i + 1).toLowerCase();
+			ColumnName = rs.getMetaData().getColumnLabel( i + 1).toLowerCase();
 			if (ColumnTypeName.toLowerCase().equals("date") || ColumnTypeName.toLowerCase().equals("datetime year to second")){
 				String _dateVal=DAOUtils.getFormatedDateTime( rs.getTimestamp(ColumnName));
 				if(_dateVal!=null && !_dateVal.equals("")){

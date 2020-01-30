@@ -33,6 +33,9 @@ public class MessageReceiveTacheFlowHis
 	
 	@Column(columnDefinition = "varchar(2) default '0'")
 	private String state ; // 状态，0待处理，1，成功2.失败
+	
+	@Column(columnDefinition = "varchar(2000)")
+	private String stateMsg  ; //
 
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -95,6 +98,14 @@ public class MessageReceiveTacheFlowHis
 
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
+	}
+
+	public String getStateMsg() {
+		return stateMsg;
+	}
+
+	public void setStateMsg(String stateMsg) {
+		this.stateMsg = stateMsg;
 	}
 
 	

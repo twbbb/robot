@@ -34,6 +34,6 @@ public class RobotSendConstants {
 
 	public static final String MSG_SUBTYPE_IMG="3";//图片消息
 	
-	public static final String MSG_SUBTYPE_LINK="4";//链接消息
+	public static final String MSG_SUBTYPE_LINK="49";//链接消息
 
 }

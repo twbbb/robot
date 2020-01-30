@@ -13,10 +13,9 @@ import javax.persistence.TemporalType;
 
 //使用JPA注解配置映射关系
 @Entity // 告诉JPA这是一个实体类（和数据表映射的类）
-@Table(name = "message_receive_tache_flow") // @Table来指定和哪个数据表对应;如果省略默认表名就是user；
-public class MessageReceiveTacheFlow
+@Table(name = "message_answer_queue" ) // @Table来指定和哪个数据表对应;如果省略默认表名就是user；
+public class MessageAnswerQueue
 {
-
 
 	@Id // 这是一个主键
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // 自增主键
@@ -25,22 +24,14 @@ public class MessageReceiveTacheFlow
 	@Column(nullable = false, columnDefinition = "int(11)")
 	private int messageReceiveId;
 	
-	@Column(nullable = false,columnDefinition = "varchar(20)")
-	private String tacheCode =""; // 环节code
+	@Column(columnDefinition = "int(11)")
+	private int messageAnswerId;
 	
-	@Column(columnDefinition = "varchar(100)")
-	private String localRobotId  ; // 当前账号id 
-	
-	@Column(columnDefinition = "varchar(2) default '0'")
-	private String state ; // 状态，0待处理，1，成功2.失败
-
-	
-	@Column(columnDefinition = "varchar(2000)")
-	private String stateMsg  ; // 当前账号id 
-	
+	@org.hibernate.annotations.CreationTimestamp 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate ; // 
 
+	@org.hibernate.annotations.UpdateTimestamp  
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updateDate ; // 
 
@@ -52,14 +43,6 @@ public class MessageReceiveTacheFlow
 		this.id = id;
 	}
 
-	public String getTacheCode() {
-		return tacheCode;
-	}
-
-	public void setTacheCode(String tacheCode) {
-		this.tacheCode = tacheCode;
-	}
-
 	public int getMessageReceiveId() {
 		return messageReceiveId;
 	}
@@ -68,20 +51,12 @@ public class MessageReceiveTacheFlow
 		this.messageReceiveId = messageReceiveId;
 	}
 
-	public String getLocalRobotId() {
-		return localRobotId;
+	public int getMessageAnswerId() {
+		return messageAnswerId;
 	}
 
-	public void setLocalRobotId(String localRobotId) {
-		this.localRobotId = localRobotId;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
+	public void setMessageAnswerId(int messageAnswerId) {
+		this.messageAnswerId = messageAnswerId;
 	}
 
 	public Date getCreateDate() {
@@ -99,16 +74,9 @@ public class MessageReceiveTacheFlow
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
-
-	public String getStateMsg() {
-		return stateMsg;
-	}
-
-	public void setStateMsg(String stateMsg) {
-		this.stateMsg = stateMsg;
-	}
-
-	
 	
 
+	
+
+	
 }
