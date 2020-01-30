@@ -51,6 +51,10 @@ public class RobotMessageServiceImp implements RobotMessageService
 			return;
 		}
 		messageReceiveRepository.save(messageReceive);
+		//不能是自己发送的消息
+		if(messageReceive.getLocalRobotId().equals(messageReceive.getFromUserId())){
+			return;
+		}
 		
 		MessageReceiveQueue messageReceiveQueue = new MessageReceiveQueue();
 		messageReceiveQueue.setCreateDate(new Date());
