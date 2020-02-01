@@ -12,13 +12,13 @@ import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 @Configuration
 public class  ScheduleConfig implements SchedulingConfigurer {
 
-//	@Bean
-//	public ThreadPoolTaskScheduler threadPoolTaskScheduler() {
-//		ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
-//		scheduler.setPoolSize(5);
-//		scheduler.setThreadNamePrefix("robot-handler-");
-//		return scheduler;
-//	}
+	@Bean
+	public ThreadPoolTaskScheduler threadPoolTaskScheduler() {
+		ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
+		scheduler.setPoolSize(5);
+		scheduler.setThreadNamePrefix("robot-handler-");
+		return scheduler;
+	}
 
 	@Override
 	public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {

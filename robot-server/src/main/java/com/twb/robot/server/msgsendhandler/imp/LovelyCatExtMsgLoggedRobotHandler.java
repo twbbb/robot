@@ -1,6 +1,5 @@
 package com.twb.robot.server.msgsendhandler.imp;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import com.twb.robot.bean.SendHandlerContext;

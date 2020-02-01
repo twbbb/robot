@@ -18,11 +18,14 @@ public class LovelyCatGroupNoticeMsgRecHandler extends BaseLovelyCatMsgRecHandle
 		String message = messageReceive.getMessage();
 		String robotId = messageReceive.getLocalRobotId();
 		String end=robotId+"]";
-		int index = message.indexOf(end);
-		if(message.startsWith("[@at,")&&index>-1){//是@的消息
-			message =message.substring(index+end.length());
+		String start = "[@at,";
+		int endIndex = message.indexOf(end);
+		int startIndex = message.indexOf(start);
+		if(startIndex>-1&&endIndex>-1){//是@的消息
+			String messageStart = message.substring(0,startIndex).trim();
+			String messageEnd =message.substring(endIndex+end.length()).trim();
 			messageReceive.setMsgSubType(RobotRecevieConstants.MSG_SUBTYPE_NOTICE);
-			messageReceive.setMessage(message.trim());
+			messageReceive.setMessage(messageStart+messageEnd);
 		}
 
 		

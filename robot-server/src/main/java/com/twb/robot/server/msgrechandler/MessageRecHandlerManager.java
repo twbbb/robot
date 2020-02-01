@@ -1,6 +1,7 @@
 package com.twb.robot.server.msgrechandler;
 
 import com.twb.robot.server.msgrechandler.imp.LovelyCatGroupInviceMsgRecHandler;
+import com.twb.robot.server.msgrechandler.imp.LovelyCatGroupNewMemberMsgRecHandler;
 import com.twb.robot.server.msgrechandler.imp.LovelyCatGroupNoticeMsgRecHandler;
 import com.twb.robot.server.msgrechandler.imp.LovelyCatImgMsgRecHandler;
 import com.twb.robot.server.msgrechandler.imp.LovelyCatLinkMsgRecHandler;
@@ -14,7 +15,9 @@ public class MessageRecHandlerManager {
 		messageReceiveHandler = new LovelyCatLinkMsgRecHandler(messageReceiveHandler);
 		messageReceiveHandler = new LovelyCatGroupInviceMsgRecHandler(messageReceiveHandler);
 		messageReceiveHandler = new LovelyCatGroupNoticeMsgRecHandler(messageReceiveHandler);
+		messageReceiveHandler = new LovelyCatGroupNewMemberMsgRecHandler(messageReceiveHandler);
 
+		
 		
 		
 
