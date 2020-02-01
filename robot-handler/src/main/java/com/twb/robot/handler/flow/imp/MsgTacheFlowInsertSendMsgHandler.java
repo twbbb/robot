@@ -45,6 +45,8 @@ public class MsgTacheFlowInsertSendMsgHandler extends BaseMsgRecTacheFlowHandler
 		}
 		MessageSend messageSend = initMessageSend(msgRecTacheHandler, param);
 		messageSendRepository.save(messageSend);
+		
+		param.put("message_send_id", ""+messageSend.getId());
 	}
 
 	private MessageSend initMessageSend(MessageReceiveTacheHandler msgRecTacheHandler, Map param) {
