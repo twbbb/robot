@@ -46,23 +46,24 @@ public class MessageReceiveTacheHandlerServiceImp implements MessageReceiveTache
 	
 	
 	@Override
-	@Transactional
+	@Transactional(rollbackOn = Throwable.class)
 	public void handlerMessageReceiveTacheFlow(MessageReceiveTacheFlow messageReceiveTacheFlow) {
 
 		try {
 			doHandlerMsgRecTacheFlow(messageReceiveTacheFlow);
+			saveHis(messageReceiveTacheFlow);
 		} catch (Exception e) {
 			e.printStackTrace();
-			messageReceiveTacheFlow.setState(RobotCommonConstants.MESSAGE_RECEIVE_FLOW_FAIL_STATE);
-			messageReceiveTacheFlow.setStateMsg(e.getMessage());
+			
 			logger.error("异常",e);
+			throw new RuntimeException(e);
 		}
-		saveHis(messageReceiveTacheFlow);
+		
 
 		
 	}
 
-	@Transactional
+	@Transactional(rollbackOn = Throwable.class)
 	public void saveHis(MessageReceiveTacheFlow messageReceiveTacheFlow) {
 		if(RobotCommonConstants.MESSAGE_RECEIVE_FLOW_FAIL_STATE.equals(messageReceiveTacheFlow.getState())){
 			messageReceiveTacheFlowRepository.save(messageReceiveTacheFlow);
@@ -125,7 +126,7 @@ public class MessageReceiveTacheHandlerServiceImp implements MessageReceiveTache
 	}
 
 	@Override
-	@Transactional
+	@Transactional(rollbackOn = Throwable.class)
 	public List<MessageReceiveTacheFlow> getMessageReceiveTacheFlow() {
 
 		return messageReceiveTacheFlowRepository.getMessageReceiveQueueList();

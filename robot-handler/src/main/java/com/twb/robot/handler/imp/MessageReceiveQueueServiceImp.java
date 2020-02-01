@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.transaction.Transactional;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,19 +45,22 @@ public class MessageReceiveQueueServiceImp implements MessageReceiveQueueService
 	@Autowired
 	MessageReceiveTacheFlowRepository messageReceiveTacheFlowRepository;
 	
-	@Transactional
+	@Transactional(rollbackOn = Throwable.class)
 	public List<Map> getMessageReceiveQueueList(){
 		String sql = "select c.* from (select b.*,a.id queue_id from message_receive_queue a,message_receive b where a.message_receive_id=b.id order by message_receive_id ) c limit 0,1000";
 		return DbServiceUtil.getDbService().queryForMapListBySql(sql, new String[]{});
 	}
 	
 	
-	@Transactional
+	@Transactional(rollbackOn = Throwable.class)
 	public void handlerMessageReceiveQueue(Map param) {
 		List<MessageReceiveTache> list = messageReceiveTacheRepository.getMessageReceiveQueueList();
 		 List<String> newSqlPramList ;
 		for(MessageReceiveTache messageReceiveTache:list){
 			String sql = messageReceiveTache.getTacheContent();
+			if(StringUtils.isEmpty(sql)){
+				continue;
+			}
 			newSqlPramList = new ArrayList<String>();
 			String newSql = SqlParseUtils.getNewSql(sql, param, newSqlPramList);
 			List resultList = DbServiceUtil.getDbService().queryForMapListBySql(newSql, newSqlPramList);

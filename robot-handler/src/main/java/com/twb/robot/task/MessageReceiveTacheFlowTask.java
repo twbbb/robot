@@ -39,8 +39,9 @@ public class MessageReceiveTacheFlowTask {
 				messageReceiveTacheHandlerServiceImp.handlerMessageReceiveTacheFlow(messageReceiveTacheFlow);
 			}catch(Throwable e){
 				logger.error(messageReceiveTacheFlow.getId()+",处理失败",e);
-				//messageReceiveTacheHandlerServiceImp.saveMessageReceiveQueueHis(map, RobotCommonConstants.MSG_RECEIVE_QUEUE_FAIL_STATE, "异常："+e.getMessage());
-				
+				messageReceiveTacheFlow.setState(RobotCommonConstants.MESSAGE_RECEIVE_FLOW_FAIL_STATE);
+				messageReceiveTacheFlow.setStateMsg(e.getMessage());
+				messageReceiveTacheHandlerServiceImp.saveHis(messageReceiveTacheFlow);
 				
 			}
 		}

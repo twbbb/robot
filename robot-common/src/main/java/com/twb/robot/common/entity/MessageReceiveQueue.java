@@ -25,7 +25,7 @@ public class MessageReceiveQueue
 	private int messageReceiveId;
 	
 	@Column(columnDefinition = "varchar(100)")
-	private String localRobotId  ; // 当前账号id 
+	private String localRobotId  =""; // 当前账号id 
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate ; // 
@@ -34,10 +34,10 @@ public class MessageReceiveQueue
 	private Date updateDate ; // 
 	
 	@Column(columnDefinition = "varchar(2) default '0'")
-	private String state;
+	private String state="";
 	
 	@Column(columnDefinition = "varchar(2000)")
-	private String stateMsg;
+	private String stateMsg="";
 
 	public Integer getId() {
 		return id;

@@ -23,9 +23,9 @@ public class MessageSend
 	private String toUserName =""; // '微信群组发送者名称'
 	
 	@Column(columnDefinition = "varchar(200)")
-	private String toGroupId ; // 微信群组id
+	private String toGroupId=""; // 微信群组id
 	@Column(columnDefinition = "varchar(200)")
-	private String toGroupName ; // 微信群组名称
+	private String toGroupName =""; // 微信群组名称
 
 	@Column(columnDefinition = "varchar(100)")
 	private String localRobotId  =""; // 当前账号id
