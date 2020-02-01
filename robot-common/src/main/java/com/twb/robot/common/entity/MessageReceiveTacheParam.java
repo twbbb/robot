@@ -28,17 +28,17 @@ public class MessageReceiveTacheParam
 	private String paramKey ; // 键
 	
 	@Column(columnDefinition = "varchar(1000)")
-	private String coeda ; // 值a
+	private String codea ; // 值a
 	
 	@Column(columnDefinition = "varchar(1000)")
-	private String coedb ; // 值b
+	private String codeb ; // 值b
 	
 	
 	@Column(columnDefinition = "varchar(1000)")
-	private String coedc ; // 值c
+	private String codec ; // 值c
 	
 	@Column(columnDefinition = "varchar(1000)")
-	private String coedd ; // 值d
+	private String coded ; // 值d
 	
 	
 	@Column(columnDefinition = "varchar(200)")
@@ -65,31 +65,6 @@ public class MessageReceiveTacheParam
 	}
 
 
-
-	public String getCoeda() {
-		return coeda;
-	}
-
-	public void setCoeda(String coeda) {
-		this.coeda = coeda;
-	}
-
-	public String getCoedb() {
-		return coedb;
-	}
-
-	public void setCoedb(String coedb) {
-		this.coedb = coedb;
-	}
-
-	public String getCoedc() {
-		return coedc;
-	}
-
-	public void setCoedc(String coedc) {
-		this.coedc = coedc;
-	}
-
 	public Date getCreateDate() {
 		return createDate;
 	}
@@ -106,15 +81,37 @@ public class MessageReceiveTacheParam
 		this.remark = remark;
 	}
 
-	public String getCoedd() {
-		return coedd;
+	public String getCodea() {
+		return codea;
 	}
 
-	public void setCoedd(String coedd) {
-		this.coedd = coedd;
+	public void setCodea(String codea) {
+		this.codea = codea;
 	}
 
-	
+	public String getCodeb() {
+		return codeb;
+	}
+
+	public void setCodeb(String codeb) {
+		this.codeb = codeb;
+	}
+
+	public String getCodec() {
+		return codec;
+	}
+
+	public void setCodec(String codec) {
+		this.codec = codec;
+	}
+
+	public String getCoded() {
+		return coded;
+	}
+
+	public void setCoded(String coded) {
+		this.coded = coded;
+	}
 	
 	
 	
