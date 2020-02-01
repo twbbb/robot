@@ -91,7 +91,7 @@ public class LovelyCatRobot extends BaseRobotServer {
 				e.printStackTrace();
 			}
 			messageSend.setSendState(RobotCommonConstants.MESSAGE_SEND_SUC_STATE);
-			messageSend.setMessage(str);
+			messageSend.setSendStateMsg(str);
 		}else{
 			messageSend.setSendState(RobotCommonConstants.MESSAGE_SEND_FAIL_STATE);
 
