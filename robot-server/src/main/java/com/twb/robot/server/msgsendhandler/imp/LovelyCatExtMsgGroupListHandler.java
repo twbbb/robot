@@ -24,7 +24,7 @@ public class LovelyCatExtMsgGroupListHandler extends BaseLovelyCatMsgSendHandler
 	public void handlerMyMessageSend(SendHandlerContext sendHandlerContext) {
 		Map map = sendHandlerContext.getSendParam();
 		map.put(LovelyCatConstants.MSG_SEND_TYPE, "205");
-		String isRefresh=LovelyCatConstants.MSG_SEND_IS_REFRESH_Y;
+		String isRefresh=LovelyCatConstants.MSG_SEND_IS_REFRESH_N;
 		if(!StringUtils.isEmpty(sendHandlerContext.getMessageSend().getCol1())){
 			isRefresh=sendHandlerContext.getMessageSend().getCol1();
 		}
