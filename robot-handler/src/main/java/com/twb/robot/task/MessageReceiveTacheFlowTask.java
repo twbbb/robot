@@ -22,7 +22,7 @@ public class MessageReceiveTacheFlowTask {
 	MessageReceiveTacheHandlerService messageReceiveTacheHandlerServiceImp;
 	
 
- 	@Scheduled(cron = "0/5 * * * * ?")
+ 	@Scheduled(cron = "* * * * * ?")
 	public void handlerTacheFlowData() {
  		logger.info("run once");
 
