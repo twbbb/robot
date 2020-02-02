@@ -22,14 +22,12 @@ public class MessageReceiveQueueTask {
 	MessageReceiveQueueService messageReceiveQueueServiceImp;
 	
 
- 	@Scheduled(cron = "0/5 * * * * ?")
+ 	@Scheduled(cron = "0/2 * * * * ?")
 	public void handlerMsgRecData() {
- 		logger.info("run once");
 
  		List<Map>  list = messageReceiveQueueServiceImp.getMessageReceiveQueueList();
  		
  		if(list==null || list.isEmpty()){
- 			logger.info("empty data , run once end");
 			return;
 		}
 		logger.info("待处理数据条数："+list.size());

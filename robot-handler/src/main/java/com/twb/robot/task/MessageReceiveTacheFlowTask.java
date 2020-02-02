@@ -22,14 +22,11 @@ public class MessageReceiveTacheFlowTask {
 	MessageReceiveTacheHandlerService messageReceiveTacheHandlerServiceImp;
 	
 
- 	@Scheduled(cron = "* * * * * ?")
+ 	@Scheduled(cron = "0/2 * * * * ?")
 	public void handlerTacheFlowData() {
- 		logger.info("run once");
-
  		List<MessageReceiveTacheFlow>  list = messageReceiveTacheHandlerServiceImp.getMessageReceiveTacheFlow();
  		
  		if(list==null || list.isEmpty()){
- 			logger.info("empty data , run once end");
 			return;
 		}
 		logger.info("待处理数据条数："+list.size());
