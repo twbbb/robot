@@ -18,7 +18,7 @@ public class SendMsgTask {
 	
 	@Autowired
 	MessageSendService messageSendServiceImp;
-	@Scheduled(cron = "0/5 * * * * ?")
+	@Scheduled(cron = "0/2 * * * * ?")
 	public void handlerSendDate() {
 		
 		List<MessageSend> list = messageSendServiceImp.getSendMsg();
