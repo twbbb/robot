@@ -2,7 +2,7 @@ package com.twb.robot.config;
 
 public class LovelyCatConstants {
 
-	public static final String MSG_SEND_URL="http://114.67.112.14:8073/send";
+	public static final String MSG_SEND_URL="http://127.0.0.1:8073/send";
 	public static final String MSG_SEND_TYPE="type";
 	public static final String MSG_SEND_MSG="msg";
 	public static final String MSG_SEND_TO_WXID="to_wxid";
