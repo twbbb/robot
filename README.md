@@ -46,6 +46,9 @@ robot
 
 
 # 场景都是可配置
+已配置sql 
+
+https://github.com/twbbb/robot/tree/master/ext/sql
 ![环节拆分](/ext/配置.png)
 ![环节处理](/ext/环节处理.png)
 ![环节参数](/ext/参数.png)
