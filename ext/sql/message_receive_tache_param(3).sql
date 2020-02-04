@@ -1,0 +1,10 @@
+INSERT INTO `message_receive_tache_param` VALUES (1, 'group_all', NULL, NULL, NULL, NULL, 'group_send_key', '群发key');
+INSERT INTO `message_receive_tache_param` VALUES (14, '23070876266@chatroom', NULL, NULL, NULL, NULL, 'answer_group_id', '消息回复群id');
+INSERT INTO `message_receive_tache_param` VALUES (16, '22039568348@chatroom', NULL, NULL, NULL, NULL, 'group_send_id', '群发群');
+INSERT INTO `message_receive_tache_param` VALUES (17, '23070876266@chatroom', NULL, NULL, NULL, NULL, 'robot_manager_group', '管理群');
+INSERT INTO `message_receive_tache_param` VALUES (18, '22039568348@chatroom', NULL, NULL, NULL, NULL, 'robot_manager_group', '管理群');
+INSERT INTO `message_receive_tache_param` VALUES (19, '0', NULL, NULL, NULL, NULL, 'group_send_state', '1准备群发2开始群发');
+INSERT INTO `message_receive_tache_param` VALUES (274, '1', '小范是谁', '范范范', 'q1', NULL, 'qa_data', NULL);
+INSERT INTO `message_receive_tache_param` VALUES (275, '2', '程序做什么', '机器人', 'q2', NULL, 'qa_data', NULL);
+INSERT INTO `message_receive_tache_param` VALUES (276, '进群', '22229768602@chatroom', NULL, NULL, NULL, 'invite_group', NULL);
+INSERT INTO `message_receive_tache_param` VALUES (277, '22229768602@chatroom', NULL, NULL, NULL, NULL, 'auto_answer_group', NULL);
