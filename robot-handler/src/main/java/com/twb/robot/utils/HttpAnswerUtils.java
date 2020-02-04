@@ -49,7 +49,21 @@ public class HttpAnswerUtils {
 				throw new RuntimeException("返回异常异常"+answer);
 			}
 			Map result = (Map) map.get("result");
+			String type = StringConvertUtils.toString(result.get("type"));
 			String content =  StringConvertUtils.toString(result.get("content"));
+			String relquestion =  StringConvertUtils.toString(result.get("relquestion"));
+			if("无回复".equals(type)){
+				throw new RuntimeException("无回复");
+			}
+			if(!StringUtils.isEmpty(relquestion)){
+				if(!StringUtils.isEmpty(content)){
+					content=content+"\r\n";
+				}
+				content = content+"您还可以输入如下问题查看，"+relquestion;
+			}
+			if(StringUtils.isEmpty(content)){
+				throw new RuntimeException("获取异常:"+result);
+			}
 			return content;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -61,7 +75,7 @@ public class HttpAnswerUtils {
 		String host = "https://jisuiqa.market.alicloudapi.com";
 	    String path = "/iqa/query";
 	    String method = "GET";
-	    String appcode = "41f22a4d75944166a2a8acba79aaa426";
+	    String appcode = "";
 	    Map<String, String> headers = new HashMap<String, String>();
 	    headers.put("Authorization", "APPCODE " + appcode);
 	    Map<String, String> querys = new HashMap<String, String>();
