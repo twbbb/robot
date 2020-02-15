@@ -29,7 +29,7 @@ public class MessageController {
 		Map paramMap = new HashMap();	
 		try {
 			//body = URLDecoder.decode(body, "UTF-8");
-			logger.info("接受消息:"+body);
+			//logger.info("接受消息:"+body);
 			robotMessageServiceImp.handlerReceivMsg(body);
 			returnCode="1";
 		} catch (Throwable e) {
