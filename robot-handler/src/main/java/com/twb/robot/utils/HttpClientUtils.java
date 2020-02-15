@@ -1,6 +1,7 @@
 package com.twb.robot.utils;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.httpclient.HttpClient;
@@ -17,23 +18,23 @@ public class HttpClientUtils
 	{
 		HttpClient client = new HttpClient();
 		GetMethod httpget = new GetMethod(getUrl);
-
+		Map map = new HashMap();
 		try
 		{
-//			httpget.addRequestHeader("Content-Type", "application/x-www-form-urlencoded;");
+			httpget.addRequestHeader("Content-Type", "application/x-www-form-urlencoded;");
 			httpget.getParams().setParameter(HttpMethodParams.SO_TIMEOUT, 10000);
 			client.executeMethod(httpget);
 			int statusCode = httpget.getStatusCode();
 			String responseBody = httpget.getResponseBodyAsString();
-			//hcrb.setResponseBody(responseBody);
-			//hcrb.setStatusCode(statusCode);
+			map.put("statusCode", statusCode);
+			map.put("responseBody", responseBody);
 		}
 		finally
 		{
 			httpget.releaseConnection();
 		}
 
-		return null;
+		return map;
 	}
 
 }
