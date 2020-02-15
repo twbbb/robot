@@ -56,7 +56,7 @@ https://github.com/twbbb/robot/tree/master/ext/sql
 # 整体结构
 ![整体结构](/ext/整体结构.png)
 
-![业务员场景](/ext/业务员场景.png)
+![业务场景](/ext/业务员场景.png)
 
 
 
