@@ -78,7 +78,7 @@ public class HttpAnswerUtils {
 	    //请在阿里云申请https://market.aliyun.com/products/57126001/cmapi033508.html?spm=5176.730005.productlist.d_cmapi033508.10903524pYLsl6&innerSource=search_%E6%99%BA%E8%83%BD%E9%97%AE%E7%AD%94&accounttraceid=82ae3ede5c7a4cf5bb44bec6015ddc09fjrq#sku=yuncode2750800001
 	    //	    String appcode = "41f22a4d75944166a2a8acba79aaa426";
 
-	    String appcode = "";
+	    String appcode = "41f22a4d75944166a2a8acba79aaa426";
 	    Map<String, String> headers = new HashMap<String, String>();
 	    headers.put("Authorization", "APPCODE " + appcode);
 	    Map<String, String> querys = new HashMap<String, String>();
