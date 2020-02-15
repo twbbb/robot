@@ -11,7 +11,7 @@ public class GetRobotInfo {
 	@Autowired
 	RobotMessageService robotMessageServiceImp;
 	
-	@Scheduled(cron = "30 0 * * * ? ")
+	@Scheduled(cron = "30 0 0 * * ? ")
 	//获取所有群组
 	public void getAllGroup() {
 		try{
